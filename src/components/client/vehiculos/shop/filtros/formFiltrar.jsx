@@ -60,14 +60,14 @@ const FormFiltro = ({ marcas }) => {
       <div className="md:flex gap-0 md:gap-8  md:space-y-0 space-y-4">
         <div className="flex flex-col w-full">
           <label
-            htmlFor="tipo"
+            htmlFor="tipoUsado"
             className="text-white md:text-black font-bold text-sm "
           >
             Okm/Usado (no funciona)
           </label>
           <select
-            name="tipo"
-            id="tipo"
+            name="tipoUsado"
+            id="tipoUsado"
             onChange={selectForm}
             className="rounded-xl py-2 px-1 border-black border md:text-sm"
           >
