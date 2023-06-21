@@ -52,35 +52,42 @@ const FormCotiza = (props) => {
       <form className={`pt-3 md:px-${props.paddingX}`} onSubmit={handlerSubmit}>
         <div className="gap-4 grid grid-cols-1 md:grid-cols-3 ">
           <div className="flex flex-col">
-            <label className="text-white text-sm font-bold">
+            <label htmlFor="nombre" className="text-white text-sm font-bold">
               Nombre y Apellido
             </label>
             <input
               type="text"
               placeholder="Todos"
               name="nombre"
+              id="nombre"
               value={formulario.nombre}
               onChange={onChange}
               className=" rounded-lg py-1 md:py-2 px-2 text-sm"
             />
           </div>
           <div className="flex flex-col">
-            <label className="text-white text-sm font-bold">Teléfono</label>
+            <label htmlFor="telefono" className="text-white text-sm font-bold">
+              Teléfono
+            </label>
             <input
               type="text"
               placeholder="Todos"
               name="telefono"
+              id="telefono"
               value={formulario.telefono}
               onChange={onChange}
               className=" rounded-lg py-1 md:py-2  px-2 text-sm"
             />
           </div>
           <div className="flex flex-col">
-            <label className="text-white text-sm font-bold">Email</label>
+            <label htmlFor="email" className="text-white text-sm font-bold">
+              Email
+            </label>
             <input
               type="text"
               placeholder="Todos"
               name="email"
+              id="email"
               value={formulario.email}
               onChange={onChange}
               className=" rounded-lg py-1 md:py-2 px-2 text-sm"
@@ -88,11 +95,14 @@ const FormCotiza = (props) => {
           </div>
           {props.mensaje && (
             <div className="flex flex-col md:col-span-3">
-              <label className="text-white text-sm font-bold">Mensaje</label>
+              <label htmlFor="nombre" className="text-white text-sm font-bold">
+                Mensaje
+              </label>
               <textarea
                 className="py-1 md:py-2 px-2 text-sm h-32 md:h-40 rounded-lg"
                 placeholder="Todas"
                 name="mensaje"
+                id="nombre"
                 onChange={onChange}
                 value={formulario.mensaje}
               ></textarea>
