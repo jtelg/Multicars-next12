@@ -1,5 +1,5 @@
 // import { getSession } from 'next-auth/react';
-import { conexionDB } from '../config/db';
+import { conexionDB } from "../config/db";
 
 const ctrlUser = {
   SAVE_USER: async (req, res, resolve) => {
@@ -36,7 +36,7 @@ const ctrlUser = {
       nombre: result.nombre,
       email: result.email,
       id: result.insertId,
-      role: result.role
+      role: result.role,
     });
   },
   USUARIO_LOGIN: (req, res, resolve) => {
@@ -83,7 +83,7 @@ const ctrlUser = {
       res.status(500).end();
       return resolve();
     }
-  }
+  },
 };
 
 const APPLY_GET = async (sql, res, resolve) => {

@@ -1,5 +1,5 @@
-import { conexionDB } from '../config/db';
-import APIConsultas from '../services/consultas';
+import { conexionDB } from "../config/db";
+import APIConsultas from "../services/consultas";
 const ctrlVenta = {
   VENTA_GET_LIST: async (req, res, resolve) => {
     // const sqltime = `SET time_zone = '-03:00'`;
@@ -101,7 +101,7 @@ const ctrlVenta = {
             NOW(),
             '${req.body.venta.comentario}'
             );`;
-    let idventa = '';
+    let idventa = "";
     try {
       const [result] = await conexionDB.query(sql);
       idventa = result.insertId;
@@ -121,11 +121,11 @@ const ctrlVenta = {
     }
   },
   ARTXVENTA_ADD: async (req, res, resolve, idventa, idestadoSeg) => {
-    let string = '';
+    let string = "";
     req.body.arrProd.forEach((prod) => {
       string += `('${idventa}', '${prod.idart}', '${null}', '${null}',
        '${prod.precioFinal}', '${prod.cantidadForm}', '${
-        prod.comentario || ''
+        prod.comentario || ""
       }','${prod.presentacion}'),`;
     });
     string = string.substring(0, string.length - 1);
@@ -203,6 +203,6 @@ const ctrlVenta = {
       res.status(500).end();
       return resolve();
     }
-  }
+  },
 };
 export default ctrlVenta;
