@@ -6,8 +6,8 @@ html,
 body {
   padding: 0;
   margin: 0;
-  font-family: -apple-system, BlinkMacSystemFont, Segoe UI, Roboto, Oxygen,
-    Ubuntu, Cantarell, Fira Sans, Droid Sans, Helvetica Neue, sans-serif;
+  font-family: "Montserrat", sans-serif;
+  background-color: white;
 }
 
 a {
@@ -17,4 +17,8 @@ a {
 
 * {
   box-sizing: border-box;
+}
+
+.divCss {
+  border-radius: 10% 0% 29% 0% / 0% 49% 38% 31%;
 }
