@@ -13,7 +13,6 @@ const FormCotiza = (props) => {
   useEffect(() => {
     if (props.data) {
       setFormulario({ ...formulario, ...props.data });
-      console.log(formulario);
     }
   }, [props.data]);
 
@@ -25,6 +24,7 @@ const FormCotiza = (props) => {
   const handlerSubmit = (e) => {
     e.preventDefault();
     if (checked) {
+      console.log(formulario);
       Swal.fire({
         icon: "success",
         title: "Mensaje enviado",
@@ -45,7 +45,7 @@ const FormCotiza = (props) => {
   return (
     <div className={`bg-black p-5 md:px-0 shadow-lg rounded-${props.radius}`}>
       {props.titulo && (
-        <h1 className="text-white text-xl md:text-4xl uppercase text-center font-bold">
+        <h1 className="text-white text-2xl md:text-4xl uppercase text-center font-bold">
           {props.titulo}
         </h1>
       )}
