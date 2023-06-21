@@ -114,11 +114,15 @@ const FormCotiza = (props) => {
             <input
               type="checkbox"
               name="politicas"
+              id="politicas"
               checked={checked}
               onChange={(e) => setChecked(e.target.checked)}
               className="bg-black"
             />
-            <label className="text-white text-sm font-extralight">
+            <label
+              htmlFor="politicas"
+              className="text-white text-sm font-extralight"
+            >
               Acepto las politicas de privacidad
             </label>
           </div>
