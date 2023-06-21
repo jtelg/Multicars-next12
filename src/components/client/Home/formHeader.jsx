@@ -6,7 +6,7 @@ const FormHeader = () => {
   const router = useRouter();
   const [marcas, setMarcas] = useState([]);
   const [modelos, setModelos] = useState([]);
-  const [form, setForm] = useState();
+  const [form, setForm] = useState({});
 
   useEffect(() => {
     let marca = [];

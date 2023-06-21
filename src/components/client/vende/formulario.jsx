@@ -15,7 +15,9 @@ const Formulario = () => {
     <div>
       <form className="p-5 space-y-4 md:space-y-0 gap-4 grid grid-cols-1 md:grid-cols-3 md:px-36 ">
         <div className="flex flex-col">
-          <label className="text-white text-sm font-bold">Marca</label>
+          <label htmlFor="marca" className="text-white text-sm font-bold">
+            Marca
+          </label>
           <select
             name="marca"
             id="marca"
@@ -29,7 +31,9 @@ const Formulario = () => {
           </select>
         </div>
         <div className="flex flex-col">
-          <label className="text-white text-sm font-bold">Modelo</label>
+          <label htmlFor="modelo" className="text-white text-sm font-bold">
+            Modelo
+          </label>
           <input
             type="text"
             name="modelo"
@@ -40,7 +44,9 @@ const Formulario = () => {
           />
         </div>
         <div className="flex flex-col">
-          <label className="text-white text-sm font-bold">Año</label>
+          <label htmlFor="anio" className="text-white text-sm font-bold">
+            Año
+          </label>
           <select
             name="anio"
             id="anio"

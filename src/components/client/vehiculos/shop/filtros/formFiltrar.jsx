@@ -6,20 +6,17 @@ const FormFiltro = ({ marcas }) => {
   const router = useRouter();
   const [modelos, setModelos] = useState([]);
   const [formulario, setFormulario] = useState({});
-  const [year, setYear] = useState(true);
 
   useEffect(() => {
     const getFechas = () => {
       const n = new Date().getFullYear();
-      let select = document.getElementById("anio");
+      const select = document.getElementById("anio");
       for (let i = n; i >= 1995; i--) {
-        console.log(i);
         select.options.add(new Option(i, i));
       }
-      setYear(false);
     };
 
-    year && getFechas();
+    getFechas();
   }, []);
 
   const selectForm = async (e) => {
@@ -59,7 +56,10 @@ const FormFiltro = ({ marcas }) => {
     <form onSubmit={handlerSubmit} className={`w-full md:flex md:flex-col  `}>
       <div className="md:flex gap-0 md:gap-8  md:space-y-0 space-y-4">
         <div className="flex flex-col w-full">
-          <label className="text-white md:text-black font-bold text-sm ">
+          <label
+            htmlFor="idmarca"
+            className="text-white md:text-black font-bold text-sm "
+          >
             Marca
           </label>
           <select
@@ -77,7 +77,10 @@ const FormFiltro = ({ marcas }) => {
           </select>
         </div>
         <div className="flex flex-col w-full">
-          <label className="text-white md:text-black font-bold text-sm">
+          <label
+            htmlFor="modelo"
+            className="text-white md:text-black font-bold text-sm"
+          >
             Modelo
           </label>
           <select
@@ -95,7 +98,10 @@ const FormFiltro = ({ marcas }) => {
           </select>
         </div>
         <div className="flex flex-col w-full">
-          <label className="text-white md:text-black font-bold text-sm">
+          <label
+            htmlFor="anio"
+            className="text-white md:text-black font-bold text-sm"
+          >
             Año
           </label>
           <select
@@ -109,7 +115,10 @@ const FormFiltro = ({ marcas }) => {
         </div>
 
         <div className="flex flex-col w-full">
-          <label className="text-white md:text-black font-bold text-sm">
+          <label
+            htmlFor="valor1"
+            className="text-white md:text-black font-bold text-sm"
+          >
             Valor (no funciona)
           </label>
           <div className="flex items-center justify-between">

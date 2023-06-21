@@ -1,32 +1,32 @@
-import React, { useState } from 'react';
-import Button from '../../components/utils/button';
-import axios from 'axios';
+import React, { useState } from "react";
+import Button from "../../components/utils/button";
+import axios from "axios";
 
 export default function Register({ children }) {
   const [user, setUser] = useState({
-    name: '',
-    email: '',
-    password: ''
+    name: "",
+    email: "",
+    password: "",
   });
 
   const confirmarRegistro = async (e) => {
     e.preventDefault();
     // await axios.post('/api/user', { user });
     const objUser = {
-      role: 'Cliente',
+      role: "Cliente",
       nombre: user.name,
       email: user.email,
-      image: '',
-      pass: '',
+      image: "",
+      pass: "",
       tipodoc: 1,
-      numdoc: '',
-      telefono: '',
-      fecregistro: '',
-      recibe_oferta: 0
+      numdoc: "",
+      telefono: "",
+      fecregistro: "",
+      recibe_oferta: 0,
     };
 
     await axios.post(`${process.env.NEXTAUTH_URL}/api/user/login`, {
-      objUser
+      objUser,
     });
   };
 
