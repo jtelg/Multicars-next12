@@ -7,7 +7,7 @@ const CardVehiculos = ({ data }) => {
       <div className="overflow-hidden rounded-3xl shadow-lg">
         <Link href={`/vehiculos/${data.idart}`}>
           <div>
-            <img src="/media/car.png" alt="foto" className="w-full" />
+            <img src="/media/Car.png" alt="foto" className="w-full" />
           </div>
           <div className="border-t-black border-t-4 relative  ">
             <div className="p-4">
