@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import Button from "../../components/utils/button";
+// import Button from "../../components/utils/button";
 import axios from "axios";
 
 export default function Register({ children }) {
@@ -94,9 +94,9 @@ export default function Register({ children }) {
                     />
                   </div>
                 </div>
-                <div className="mt-8">
+                {/* <div className="mt-8">
                   <Button>Registrar</Button>
-                </div>
+                </div> */}
               </div>
             </form>
           </div>
