@@ -27,8 +27,8 @@ const FormFiltro = ({ marcas }) => {
         APIConsultas.modelos.GET_SHOP_MARCA(e.target.value).then((resp) => {
           modelo = resp;
           modelo.unshift({ idmarca: 0, nombre: "Todos" });
+          setModelos(modelo);
         });
-        setModelos(modelo);
         break;
 
       default:
@@ -53,8 +53,29 @@ const FormFiltro = ({ marcas }) => {
   };
 
   return (
-    <form onSubmit={handlerSubmit} className={`w-full md:flex md:flex-col  `}>
+    <form
+      onSubmit={handlerSubmit}
+      className={`w-full md:flex md:flex-col mt-4 `}
+    >
       <div className="md:flex gap-0 md:gap-8  md:space-y-0 space-y-4">
+        <div className="flex flex-col w-full">
+          <label
+            htmlFor="tipo"
+            className="text-white md:text-black font-bold text-sm "
+          >
+            Okm/Usado (no funciona)
+          </label>
+          <select
+            name="tipo"
+            id="tipo"
+            onChange={selectForm}
+            className="rounded-xl py-2 px-1 border-black border md:text-sm"
+          >
+            <option value="">- seleccione -</option>
+            <option value="0km">0 KM</option>
+            <option value="usado">Usado</option>
+          </select>
+        </div>
         <div className="flex flex-col w-full">
           <label
             htmlFor="idmarca"
@@ -90,8 +111,8 @@ const FormFiltro = ({ marcas }) => {
             className="rounded-xl py-2 px-1 border-black border md:text-sm"
           >
             <option value="">- seleccione -</option>
-            {modelos?.map((e) => (
-              <option key={e.idart} value={e.modelo}>
+            {modelos?.map((e, i) => (
+              <option key={i} value={e.modelo}>
                 {e.modelo}
               </option>
             ))}

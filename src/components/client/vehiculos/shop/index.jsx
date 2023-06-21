@@ -21,7 +21,7 @@ const ShopPage = () => {
   return loading ? (
     <Loading></Loading>
   ) : (
-    <div className=" gap-0 md:gap-8 space-y-5 md:space-y-0 md:flex md:flex-wrap md:justify-between ">
+    <div className=" gap-0 md:gap-y-8 space-y-5 md:space-y-0 md:flex md:flex-wrap md:justify-between ">
       {arrProductos?.map((e) => (
         <CardVehiculos key={e.idart} data={e}></CardVehiculos>
       ))}

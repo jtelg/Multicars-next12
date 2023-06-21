@@ -51,17 +51,17 @@ const HomeComponent = () => {
           </h1>
           <div className="flex flex-col md:grid md:grid-cols-4 gap-5">
             {arrProductos.slice(0, 4).map((e) => (
-              <CardVehiculos key={e} data={e} />
+              <CardVehiculos key={e.idart} data={e} />
             ))}
             <div className="flex flex-col md:flex-row justify-center gap-4 md:gap-5 md:col-span-4 md:mt-8">
               <button
                 onClick={() => router.push("/vende")}
                 className="bg-primary text-white py-3 text-sm font-bold  uppercase rounded-lg md:w-1/5"
               >
-                Quiero vender
+                Quiero vender un auto
               </button>
               <button className="border-primary border-2 text-primary py-3 text-sm  font-bold  uppercase rounded-lg md:w-1/5">
-                Quiero comprar
+                Quiero comprar un auto
               </button>
             </div>
           </div>
@@ -73,9 +73,8 @@ const HomeComponent = () => {
               FINANCIÁ LA COMPRA DE TU VEHÍCULO
             </h1>
             <p className="font-medium md:w-[30%] m-auto ">
-              En Multi Cars contamos con diferentes opciones de financiación
-              para que puedas adquirir tu vehículo con un plan hecho a tu
-              medida.
+              En Multicars contamos con amplias opciones de financiación para
+              que puedas adquirir tu vehículo con un plan de pago a tu medida.
             </p>
           </div>
           <div className="flex flex-col items-center space-y-4 md:space-y-10 ">
@@ -97,8 +96,8 @@ const HomeComponent = () => {
               Sistema llave por llave
             </h1>
             <p className="font-medium text-base">
-              En nuestra concesionaria podes financiar tu compra con tu vehículo
-              actual.
+              En nuestra agencia, podés financiar la compra de tu vehículo con
+              tu vehículo actual.
             </p>
           </div>
           <div className=" w-full  md:flex md:justify-center">
