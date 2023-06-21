@@ -1,9 +1,7 @@
 import localStorage from "../utils/localstorage.utils";
 
 const initialState = {};
-let nextState = {};
-let index_exist = -1;
-let data = [];
+
 const postReducer = (state = initialState, action) => {
   switch (action.type) {
     // #region Carrito
