@@ -20,15 +20,17 @@ const FormHeader = () => {
   const selectForm = async (e) => {
     setForm({ ...form, [e.target.name]: e.target.value });
     switch (e.target.name) {
-      case "idmarca":
+      case "idmarca": {
         const modelo = await APIConsultas.modelos.GET_SHOP_MARCA(
           e.target.value
         );
         setModelos(modelo);
         break;
+      }
 
-      default:
+      default: {
         break;
+      }
     }
   };
 
