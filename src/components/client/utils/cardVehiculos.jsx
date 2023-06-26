@@ -28,15 +28,22 @@ const CardVehiculos = ({ data }) => {
     <>
       <div className="overflow-hidden rounded-3xl shadow-lg md:max-w-[310px]">
         <Link href={`/vehiculos/${producto?.idart}`}>
-          {console.log(arr_imgs)}
-          <div>
+          <div className="h-1/2 overflow-hidden">
             {arr_imgs ? (
-              <img src={arr_imgs[1]} alt="foto" className="w-full" />
+              <img
+                src={arr_imgs[0]}
+                alt="foto"
+                className="w-full h-full object-cover"
+              />
             ) : (
-              <img src="/media/Car.png" alt="foto" className="w-full" />
+              <img
+                src="/media/Car.png"
+                alt="foto"
+                className="w-full h-full object-cover"
+              />
             )}
           </div>
-          <div className="border-t-black border-t-4 relative  ">
+          <div className="border-t-black border-t-4 relative h-1/2 flex flex-col justify-between">
             <div className="p-4">
               <h1 className="text-xl text-black font-bold uppercase">
                 {producto?.marca} {producto?.modelo}
@@ -52,7 +59,7 @@ const CardVehiculos = ({ data }) => {
                 </span>
               </div>
             </div>
-            <div className="bg-black text-white text-end p-3  radius w-[70%] float-right">
+            <div className="bg-black text-white text-end p-3  radius  ">
               <h1 className=" text-[26px] font-bold ">
                 ${producto?.precioventa.toLocaleString("es-ES")}
               </h1>

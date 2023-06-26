@@ -50,11 +50,12 @@ const APIConsultas = {
       marca,
       modelo,
       anio,
+      tipoUsado = 0,
       offset = 0,
       limit = 100,
       visible = 0
     ) => {
-      const url = `/api/producto?path=PRODUCTO_GET_LIST&offset=${offset}&limit=${limit}&idmarca=${marca}&anio=${anio}&modelo=${modelo}&visible=${visible}`;
+      const url = `/api/producto?path=PRODUCTO_GET_LIST&offset=${offset}&limit=${limit}&idmarca=${marca}&anio=${anio}&tipoUsado=${tipoUsado}&modelo=${modelo}&visible=${visible}`;
       const resprod = await fetch(url);
       let dataprod = null;
       if (resprod.ok) {

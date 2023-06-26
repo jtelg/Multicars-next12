@@ -8,7 +8,7 @@ import "react-toastify/dist/ReactToastify.css";
 
 function MyApp({ Component, pageProps }) {
   pageProps.phone = "54 9 353 6 570 880";
-  pageProps.appName = "Patio Chino";
+  pageProps.appName = "Multicars";
   pageProps.addres = "Bv Carcano 469";
   return (
     <Session comp={Component}>

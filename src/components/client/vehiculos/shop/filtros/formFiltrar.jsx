@@ -63,7 +63,7 @@ const FormFiltro = ({ marcas }) => {
             htmlFor="tipoUsado"
             className="text-white md:text-black font-bold text-sm "
           >
-            Okm/Usado (no funciona)
+            Okm/Usado
           </label>
           <select
             name="tipoUsado"
@@ -72,6 +72,7 @@ const FormFiltro = ({ marcas }) => {
             className="rounded-xl py-2 px-1 border-black border md:text-sm"
           >
             <option value="">- seleccione -</option>
+            <option value="0">Todos</option>
             <option value="0km">0 KM</option>
             <option value="Usado">Usado</option>
           </select>
@@ -111,6 +112,7 @@ const FormFiltro = ({ marcas }) => {
             className="rounded-xl py-2 px-1 border-black border md:text-sm"
           >
             <option value="">- seleccione -</option>
+            <option value="0">Todos</option>
             {modelos?.map((e, i) => (
               <option key={i} value={e.modelo}>
                 {e.modelo}

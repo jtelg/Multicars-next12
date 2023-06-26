@@ -70,7 +70,7 @@ const ProductoUpdate = (props) => {
 
   const insertProducto = async (e) => {
     e.preventDefault();
-    const re = await APIConsultas.producto.ADD(formulario);
+    const re = await APIConsultas.modelos.ADD(formulario);
     if (re) {
       router.push(
         `admin/producto/${ServUsos.convertUrl(formulario.modelo, "convert")}`
