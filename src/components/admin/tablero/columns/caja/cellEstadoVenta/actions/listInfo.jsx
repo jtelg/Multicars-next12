@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from 'react';
+import React, { useEffect, useState } from "react";
 
 const ListInfo = ({ datosVenta, close }) => {
   const [arrInfo, setArrInfo] = useState(datosVenta);

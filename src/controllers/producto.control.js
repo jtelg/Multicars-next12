@@ -80,7 +80,6 @@ const ctrlProducto = {
     let sql_idmarca = "";
     let sql_modelo = "";
     let sql_anio = "";
-    let sql_tipoUsado = "";
     if (P_idmarca !== "0") {
       sql_idmarca = `AND m.idmarca = ${P_idmarca}`;
     }

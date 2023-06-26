@@ -30,7 +30,7 @@ const urlControlSelector = {
 
 export const getServerSideProps = async (ctx) => {
   const use = ctx.query.use || false;
-  let selector = ctx.query.s?.toLocaleLowerCase();
+  const selector = ctx.query.s?.toLocaleLowerCase();
   const idcajaURL = ctx.query.idc?.toLocaleLowerCase();
   if ((!use && !selector) || !urlControlSelector[selector]) {
     return {

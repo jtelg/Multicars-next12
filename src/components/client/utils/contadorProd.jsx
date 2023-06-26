@@ -1,7 +1,7 @@
 const ContadorProd = ({ prod, actualizaProd }) => {
   const CountChange = (index) => {
     let count = +prod.cantidadForm;
-    if (index === 'resta') {
+    if (index === "resta") {
       count = count === 1 ? 1 : count - 1;
     } else {
       count = count + 1;
@@ -9,16 +9,16 @@ const ContadorProd = ({ prod, actualizaProd }) => {
     return actualizaProd({
       ...prod,
       cantidadForm: count,
-      precioTotal: prod.precioventa * count
+      precioTotal: prod.precioventa * count,
     });
   };
   const handleChange = ({ target: { name, value } }) => {
-    if (value <= 0 || value === '') {
+    if (value <= 0 || value === "") {
       value = 1;
     }
     return actualizaProd({
       ...prod,
-      [name]: value
+      [name]: value,
     });
   };
 
@@ -26,7 +26,7 @@ const ContadorProd = ({ prod, actualizaProd }) => {
     <>
       <div className="flex items-center">
         <button
-          onClick={() => CountChange('resta')}
+          onClick={() => CountChange("resta")}
           className="hover:text-primary-500 transition-all flex items-center justify-center h-6 w-6"
         >
           <span className="material-icons-outlined text-lg">remove</span>
@@ -41,7 +41,7 @@ const ContadorProd = ({ prod, actualizaProd }) => {
           className="w-8 text-center outline-none relative -top-[1px]"
         />
         <button
-          onClick={() => CountChange('suma')}
+          onClick={() => CountChange("suma")}
           className="hover:text-primary-500 transition-all flex items-center justify-center h-6 w-6"
         >
           <span className="material-icons-outlined text-lg">add</span>

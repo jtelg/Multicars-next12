@@ -1,4 +1,4 @@
-import ProductoUpdate from '../../../components/admin/productoForm/productoUpdate';
+import ProductoUpdate from "../../../components/admin/productoForm/productoUpdate";
 // import APIConsultas from '../../../services/consultas';
 const ProductoPageID = (props) => {
   return (
@@ -8,14 +8,14 @@ const ProductoPageID = (props) => {
   );
 };
 ProductoPageID.auth = {
-  role: 'Admin'
+  role: "Admin",
 };
 export default ProductoPageID;
 
 export const getServerSideProps = async (ctx) => {
   return {
     props: {
-      idPage: ctx.query.id
-    }
+      idPage: ctx.query.id,
+    },
   };
 };

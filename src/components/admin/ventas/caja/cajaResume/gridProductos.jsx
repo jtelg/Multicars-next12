@@ -1,35 +1,35 @@
-import { DataGrid } from '@mui/x-data-grid';
-import React, { Component } from 'react';
-import APIConsultas from '../../../../../services/consultas';
+import { DataGrid } from "@mui/x-data-grid";
+import React, { Component } from "react";
+import APIConsultas from "../../../../../services/consultas";
 export default class GridProductos extends Component {
   state = {
     arrProdsTotales: [],
     pageSize: 10,
-    loading: true
+    loading: true,
   };
 
-  formatpeso = new Intl.NumberFormat('nl-BE', {
-    style: 'currency',
-    currency: 'USD',
-    currencyDisplay: 'narrowSymbol',
-    minimumFractionDigits: 0
+  formatpeso = new Intl.NumberFormat("nl-BE", {
+    style: "currency",
+    currency: "USD",
+    currencyDisplay: "narrowSymbol",
+    minimumFractionDigits: 0,
   });
 
   col_use = [
-    { field: 'idart', headerName: 'ID', width: 100 },
-    { field: 'modelo', headerName: 'Nombre', flex: 1 },
-    { field: 'cantidad', headerName: 'Cantidad', width: 100, type: 'number' },
+    { field: "idart", headerName: "ID", width: 100 },
+    { field: "modelo", headerName: "Nombre", flex: 1 },
+    { field: "cantidad", headerName: "Cantidad", width: 100, type: "number" },
     {
-      field: 'precioventa',
-      headerName: 'Precio',
+      field: "precioventa",
+      headerName: "Precio",
       flex: 1,
-      type: 'number',
+      type: "number",
       renderCell: (params) => (
         <>
           <div>{this.formatpeso.format(params.row.precioventa)}</div>
         </>
-      )
-    }
+      ),
+    },
   ];
 
   async componentDidMount() {

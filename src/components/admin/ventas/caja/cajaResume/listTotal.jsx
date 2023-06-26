@@ -1,5 +1,5 @@
-import { DataGrid } from '@mui/x-data-grid';
-import React, { Component } from 'react';
+import { DataGrid } from "@mui/x-data-grid";
+import React, { Component } from "react";
 
 export default class ListTotal extends Component {
   // col_use_pedidos = [
@@ -14,82 +14,82 @@ export default class ListTotal extends Component {
   // ];
 
   col_use_egresos = [
-    { field: 'resumenp', headerName: '-', flex: 1 },
+    { field: "resumenp", headerName: "-", flex: 1 },
     {
-      field: 'cantidad',
-      headerName: 'Cantidad',
+      field: "cantidad",
+      headerName: "Cantidad",
       flex: 1,
-      type: 'number',
-      headerAlign: 'center'
+      type: "number",
+      headerAlign: "center",
     },
     {
-      field: 'total',
-      headerName: 'Total',
+      field: "total",
+      headerName: "Total",
       flex: 1,
-      type: 'number',
-      headerAlign: 'center',
+      type: "number",
+      headerAlign: "center",
       renderCell: (params) => (
         <>
           <div>{this.formatpeso.format(params.row.total)}</div>
         </>
-      )
-    }
+      ),
+    },
   ];
 
   col_use_totales = [
-    { field: 'resumenp', headerName: '-', flex: 1 },
+    { field: "resumenp", headerName: "-", flex: 1 },
     {
-      field: 'cantidad',
-      headerName: 'Cantidad',
+      field: "cantidad",
+      headerName: "Cantidad",
       flex: 1,
-      type: 'number',
-      headerAlign: 'center'
+      type: "number",
+      headerAlign: "center",
     },
     {
-      field: 'total',
-      headerName: 'Total',
+      field: "total",
+      headerName: "Total",
       flex: 1,
-      type: 'number',
-      headerAlign: 'center',
+      type: "number",
+      headerAlign: "center",
       renderCell: (params) => (
         <>
           <div>{this.formatpeso.format(params.row.total)}</div>
         </>
-      )
-    }
+      ),
+    },
   ];
 
   arruseTotales = [
-    { id: 0, resumenp: 'EFECTIVO', total: 0, cantidad: 0 },
-    { id: 1, resumenp: 'TRANSF.', total: 0, cantidad: 0 },
-    { id: 2, resumenp: 'TARJETA', total: 0, cantidad: 0 },
-    { id: 3, resumenp: 'TOTAL', total: 0, cantidad: 0 }
+    { id: 0, resumenp: "EFECTIVO", total: 0, cantidad: 0 },
+    { id: 1, resumenp: "TRANSF.", total: 0, cantidad: 0 },
+    { id: 2, resumenp: "TARJETA", total: 0, cantidad: 0 },
+    { id: 3, resumenp: "TOTAL", total: 0, cantidad: 0 },
   ];
 
   arruseEgresos = [
-    { id: 0, resumenp: 'EFECTIVO', total: 0, cantidad: 0 },
-    { id: 1, resumenp: 'TRANSF.', total: 0, cantidad: 0 },
-    { id: 2, resumenp: 'TARJETA', total: 0, cantidad: 0 },
-    { id: 3, resumenp: 'TOTAL', total: 0, cantidad: 0 }
+    { id: 0, resumenp: "EFECTIVO", total: 0, cantidad: 0 },
+    { id: 1, resumenp: "TRANSF.", total: 0, cantidad: 0 },
+    { id: 2, resumenp: "TARJETA", total: 0, cantidad: 0 },
+    { id: 3, resumenp: "TOTAL", total: 0, cantidad: 0 },
   ];
 
   state = {
     arr_use_totales: this.arruseTotales,
-    arr_egresos: this.arruseEgresos
+    arr_egresos: this.arruseEgresos,
   };
 
-  formatpeso = new Intl.NumberFormat('nl-BE', {
-    style: 'currency',
-    currency: 'USD',
-    currencyDisplay: 'narrowSymbol',
-    minimumFractionDigits: 0
+  formatpeso = new Intl.NumberFormat("nl-BE", {
+    style: "currency",
+    currency: "USD",
+    currencyDisplay: "narrowSymbol",
+    minimumFractionDigits: 0,
   });
 
   componentDidMount() {
     const arrventas = this.props.dataCaja.arrventas;
-    const arrEfectivo = arrventas.filter((v) => v.tipo_pago === 'Efectivo');
-    const arrTransf = arrventas.filter((v) => v.tipo_pago === 'Transferencia');
-    const arrTarjeta = arrventas.filter((v) => v.tipo_pago === 'Tarjeta');
+    const arrEfectivo = arrventas.filter((v) => v.tipo_pago === "Efectivo");
+    const arrTransf = arrventas.filter((v) => v.tipo_pago === "Transferencia");
+    const arrTarjeta = arrventas.filter((v) => v.tipo_pago === "Tarjeta");
     const totalesData = this.arruseTotales;
     const totEgresos = this.arruseEgresos;
     totalesData[0].total = arrEfectivo.reduce((a, b) => a + b.total, 0) || 0;
@@ -104,10 +104,10 @@ export default class ListTotal extends Component {
     if (this.props.dataCaja.arrEgresos) {
       const arrEgresos = this.props.dataCaja.arrEgresos;
       const arrEfectivoEgre = arrEgresos.filter(
-        (v) => v.tipo_pago === 'Efectivo'
+        (v) => v.tipo_pago === "Efectivo"
       );
       const arrTransfEgre = arrEgresos.filter(
-        (v) => v.tipo_pago === 'Transferencia'
+        (v) => v.tipo_pago === "Transferencia"
       );
       totEgresos[0].total =
         arrEfectivoEgre.reduce((a, b) => a + b.monto, 0) || 0;
@@ -120,7 +120,7 @@ export default class ListTotal extends Component {
 
     this.setState({
       arr_use_totales: totalesData,
-      arr_egresos: totEgresos
+      arr_egresos: totEgresos,
     });
   }
 
