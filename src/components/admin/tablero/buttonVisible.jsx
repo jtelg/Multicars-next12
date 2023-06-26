@@ -1,5 +1,5 @@
-import React, { Component } from 'react';
-import APIConsultas from '../../../services/consultas';
+import React, { Component } from "react";
+import APIConsultas from "../../../services/consultas";
 
 export default class ButtonVisible extends Component {
   async searchVisible(e) {

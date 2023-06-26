@@ -1,6 +1,6 @@
 import { useState, useEffect } from "react";
 import ModalList from "../../client/utils/modalList";
-import ColorForm from "./colorForm";
+// import ColorForm from "./colorForm";
 import { toast } from "react-toastify";
 import APIConsultas from "../../../services/consultas";
 import ImageForm from "./imageForm";

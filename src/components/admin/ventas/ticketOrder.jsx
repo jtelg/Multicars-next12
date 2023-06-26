@@ -1,11 +1,11 @@
-import React from 'react';
+import React from "react";
 
 class TicketOrder extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
       productos: this.props.arrProductos,
-      order: this.props.datosVenta
+      order: this.props.datosVenta,
     };
   }
 
@@ -27,7 +27,7 @@ class TicketOrder extends React.Component {
           <div className="w-full text-center">
             <p className="text-lg">Ticket de compra</p>
             <p className="text-xs">
-              {new Date().toLocaleDateString()} :{' '}
+              {new Date().toLocaleDateString()} :{" "}
               {new Date().toLocaleTimeString()}
             </p>
           </div>
@@ -68,7 +68,7 @@ class TicketOrder extends React.Component {
                   Telefono:
                 </span>
                 <span className="font-bold">
-                  {this.state.order.tel_wpp !== ''
+                  {this.state.order.tel_wpp !== ""
                     ? this.state.order.tel_wpp
                     : this.state.order.tel_form}
                 </span>
@@ -83,7 +83,7 @@ class TicketOrder extends React.Component {
                       {prod.modelo} ({prod.presentacion})
                     </p>
                     <p className="text-sm font-bold w-1/4">
-                      ${+prod.precioventa.toLocaleString('de')}
+                      ${+prod.precioventa.toLocaleString("de")}
                     </p>
                   </li>
                 ))}

@@ -26,10 +26,15 @@ const CardVehiculos = ({ data }) => {
   }, [data]);
   return (
     <>
-      <div className="overflow-hidden rounded-3xl shadow-lg">
+      <div className="overflow-hidden rounded-3xl shadow-lg md:max-w-[310px]">
         <Link href={`/vehiculos/${producto?.idart}`}>
+          {console.log(arr_imgs)}
           <div>
-            <img src="/media/Car.png" alt="foto" className="w-full" />
+            {arr_imgs ? (
+              <img src={arr_imgs[1]} alt="foto" className="w-full" />
+            ) : (
+              <img src="/media/Car.png" alt="foto" className="w-full" />
+            )}
           </div>
           <div className="border-t-black border-t-4 relative  ">
             <div className="p-4">

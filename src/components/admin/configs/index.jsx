@@ -56,12 +56,7 @@ const TablesConfig = () => {
         </div>
       ) : (
         <div className="flex lg:flex-row flex-col lg:gap-0 gap-8 w-full justify-around mt-7 px-4">
-          <Marcas
-            setSub_categ={setSub_categ}
-            sub_categ={sub_categ}
-            setCateg={setCateg}
-            categ={categ}
-          />
+          <Marcas sub_categ={sub_categ} categ={categ} />
         </div>
       )}
     </>

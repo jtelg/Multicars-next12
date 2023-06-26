@@ -17,14 +17,13 @@ const style = {
   p: 4,
 };
 
-const AccionesJS = (setSub_categ, setCateg) => {
+const AccionesJS = () => {
   // ------------------------------
   const [open, setOpen] = useState(false);
   const handleOpen = () => setOpen(true);
   const handleClose = () => setOpen(false);
   const [rows, setRows] = useState([]);
   const [name, setName] = useState("");
-  const [subcateg, setSubcateg] = useState([]);
   const columns = [
     { field: "idmarca", headerName: "ID", flex: 0.5 },
     {
@@ -57,10 +56,6 @@ const AccionesJS = (setSub_categ, setCateg) => {
     getData();
   }, []);
 
-  useEffect(() => {
-    setSub_categ(subcateg);
-  }, [setSub_categ, subcateg]);
-
   const getData = () => {
     APIConsultas.marcas.TODO(true).then((data) => {
       setRows(data?.filter((c) => c.nombre !== "No definido"));
@@ -77,10 +72,6 @@ const AccionesJS = (setSub_categ, setCateg) => {
       } else {
         return toast.error(`Error al eliminar el campo.`);
       }
-    } else if (ind === "subcateg") {
-      const res = await APIConsultas.marcas.SUBCATEG_GET_XID(params.id, true);
-      setCateg(params.row);
-      setSubcateg(res);
     }
   };
 
@@ -114,11 +105,10 @@ const AccionesJS = (setSub_categ, setCateg) => {
     columns,
     name,
     setName,
-    subcateg,
   };
 };
 
-const Marcas = ({ setSub_categ, setCateg }) => {
+const Marcas = () => {
   const {
     addCateg,
     edit,
@@ -129,7 +119,7 @@ const Marcas = ({ setSub_categ, setCateg }) => {
     columns,
     name,
     setName,
-  } = AccionesJS(setSub_categ, setCateg);
+  } = AccionesJS();
 
   return (
     <>

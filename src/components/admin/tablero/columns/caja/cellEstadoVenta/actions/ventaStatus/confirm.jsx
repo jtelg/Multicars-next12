@@ -1,5 +1,5 @@
-import { useState } from 'react';
-import utilsOrderStatus from '../../../../../../../../utils/order.utils';
+import { useState } from "react";
+import utilsOrderStatus from "../../../../../../../../utils/order.utils";
 
 const Comment = (props) => {
   const [data, setData] = useState(``);
@@ -14,7 +14,7 @@ const Comment = (props) => {
       utilsOrderStatus.orderStatusChange(
         props.datosVenta,
         data,
-        'envreti_time',
+        "envreti_time",
         4
       );
       props.close();
