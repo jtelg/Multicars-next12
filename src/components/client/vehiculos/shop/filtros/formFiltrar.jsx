@@ -73,7 +73,7 @@ const FormFiltro = ({ marcas }) => {
           >
             <option value="">- seleccione -</option>
             <option value="0km">0 KM</option>
-            <option value="usado">Usado</option>
+            <option value="Usado">Usado</option>
           </select>
         </div>
         <div className="flex flex-col w-full">

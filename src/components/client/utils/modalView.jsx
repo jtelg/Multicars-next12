@@ -31,7 +31,7 @@ const ModalView = (props) => {
       >
         <Box
           sx={style}
-          className="flex flex-col items-center   rounded-3xl border-primary-500 border-4 px-5 py-4 lg:w-auto w-[95%] bg-black "
+          className="flex flex-col items-center   rounded-3xl border-primary-500 border-4 px-5 py-4 lg:w-auto w-[95%] bg-white "
         >
           {props.children}
         </Box>

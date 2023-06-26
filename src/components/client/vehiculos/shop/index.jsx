@@ -12,6 +12,7 @@ const ShopPage = () => {
     const marca = router.query.idmarca || 0;
     const modelo = router.query.modelo || 0;
     const anio = router.query.anio || 0;
+    // const tipoUsado = router.query.tipoUsado || 0;
 
     APIConsultas.modelos.GET_SHOP(marca, modelo, anio).then((resprod) => {
       setArrProductos(resprod);
