@@ -2,8 +2,6 @@ import { useState } from "react";
 import Categorias from "./categorias";
 import Marcas from "./marcas";
 const TablesConfig = () => {
-  const [sub_categ, setSub_categ] = useState([]);
-  const [categ, setCateg] = useState([]);
   const [select, setSelect] = useState(2);
 
   return (
@@ -56,7 +54,7 @@ const TablesConfig = () => {
         </div>
       ) : (
         <div className="flex lg:flex-row flex-col lg:gap-0 gap-8 w-full justify-around mt-7 px-4">
-          <Marcas sub_categ={sub_categ} categ={categ} />
+          <Marcas />
         </div>
       )}
     </>

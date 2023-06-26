@@ -1,12 +1,12 @@
-import React, { Component } from 'react';
-import { FormControl, MenuItem, Select } from '@mui/material';
-import { connect } from 'react-redux';
+import React, { Component } from "react";
+import { FormControl, MenuItem, Select } from "@mui/material";
+import { connect } from "react-redux";
 class CajaControl extends Component {
   constructor(props) {
     super(props);
     this.state = {
       arrCajas: props.arrCajas,
-      selectTxt: props.dataCaja.titulo
+      selectTxt: props.dataCaja.titulo,
     };
   }
 
@@ -62,7 +62,7 @@ class CajaControl extends Component {
 
 const mapStateToProps = (state) => {
   return {
-    reloadCaja: state.reloadCaja
+    reloadCaja: state.reloadCaja,
   };
 };
 
