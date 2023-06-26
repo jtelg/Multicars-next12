@@ -74,12 +74,14 @@ const ctrlProducto = {
     const P_idmarca = req.query.idmarca;
     const P_modelo = req.query.modelo;
     const P_anio = req.query.anio;
+    const P_tipoUsado = req.query.tipoUsado;
 
     const P_visible =
       req.query.visible !== "-1" ? `(${req.query.visible})` : "(0,1)";
     let sql_idmarca = "";
     let sql_modelo = "";
     let sql_anio = "";
+    let sql_tipoUsado = "";
     if (P_idmarca !== "0") {
       sql_idmarca = `AND m.idmarca = ${P_idmarca}`;
     }
@@ -88,6 +90,9 @@ const ctrlProducto = {
     }
     if (P_anio !== "0") {
       sql_anio = `AND a.fecha = ${P_anio}`;
+    }
+    if (P_tipoUsado !== "0") {
+      sql_tipoUsado = `AND c.nombre = '${P_tipoUsado}'`;
     }
 
     const sql = `
@@ -160,7 +165,7 @@ const ctrlProducto = {
         WHERE a.idcateg = c.idcateg 
         AND a.visible IN ${P_visible} 
         AND a.eliminado = 0
-        ${sql_idmarca} ${sql_modelo} ${sql_anio} 
+        ${sql_idmarca} ${sql_modelo} ${sql_anio} ${sql_tipoUsado}
         LIMIT
         ${P_offset}, ${P_limite};
   `;
