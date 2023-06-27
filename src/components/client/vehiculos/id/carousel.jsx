@@ -24,8 +24,8 @@ const Carousel = ({ arr_imgs }) => {
         className="mySwiper rounded-3xl overflow-hidden md:h-fit w-fill"
       >
         {arr_imgs &&
-          arr_imgs.map((img) => (
-            <SwiperSlide>
+          arr_imgs.map((img, i) => (
+            <SwiperSlide key={i}>
               <img src={img} alt="foto" className="w-full " />
             </SwiperSlide>
           ))}
