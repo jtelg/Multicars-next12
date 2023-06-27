@@ -35,7 +35,7 @@ const CardVehiculos = ({ data }) => {
               <h1 className="text-xl text-black font-bold uppercase">
                 {producto?.marca} {producto?.modelo}
               </h1>
-              <span className=" font-medium">1.5 5PTAS AUT</span>
+              <span className=" font-medium">{producto?.motor} 5PTAS AUT</span>
               <div className="flex gap-5 font-medium">
                 <span>
                   <i className="bx bx-calendar-alt"></i> {producto?.fecha}

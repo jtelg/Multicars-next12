@@ -14,13 +14,14 @@ const MultiRangeSlider = ({
   const maxValRef = useRef(max);
   const range = useRef(null);
 
+  const increment = 10000; // Incremento deseado
+
   // Convertir a porcentaje
   const getPercent = useCallback(
     (value) => Math.round(((value - min) / (max - min)) * 100),
     [min, max]
   );
 
-  // Establecer el ancho del rango para disminuir desde el lado izquierdo
   useEffect(() => {
     const minPercent = getPercent(minVal);
     const maxPercent = getPercent(maxValRef.current);
@@ -31,7 +32,6 @@ const MultiRangeSlider = ({
     }
   }, [minVal, getPercent]);
 
-  // Establecer el ancho del rango para disminuir desde el lado derecho
   useEffect(() => {
     const minPercent = getPercent(minValRef.current);
     const maxPercent = getPercent(maxVal);
@@ -41,7 +41,6 @@ const MultiRangeSlider = ({
     }
   }, [maxVal, getPercent]);
 
-  // Obtener valores mínimos y máximos cuando cambia su estado
   useEffect(() => {
     setFormulario({ ...formulario, min: minVal, max: maxVal });
     onChange({ min: minVal, max: maxVal });
@@ -56,12 +55,15 @@ const MultiRangeSlider = ({
           max={max}
           value={minVal}
           onChange={(event) => {
-            const value = Math.min(Number(event.target.value), maxVal - 1);
+            const value = Math.min(
+              Math.round(Number(event.target.value) / increment) * increment,
+              maxVal - increment
+            );
             setMinVal(value);
             minValRef.current = value;
           }}
           className="thumb thumb--left"
-          style={{ zIndex: minVal > max - 100 && "5" }}
+          style={{ zIndex: minVal > max - increment && "5" }}
         />
         <input
           type="range"
@@ -69,7 +71,10 @@ const MultiRangeSlider = ({
           max={max}
           value={maxVal}
           onChange={(event) => {
-            const value = Math.max(Number(event.target.value), minVal + 1);
+            const value = Math.max(
+              Math.round(Number(event.target.value) / increment) * increment,
+              minVal + increment
+            );
             setMaxVal(value);
             maxValRef.current = value;
           }}
