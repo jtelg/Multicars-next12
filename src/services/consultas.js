@@ -50,12 +50,14 @@ const APIConsultas = {
       marca,
       modelo,
       anio,
-      tipoUsado = 0,
+      tipoUsado,
+      min,
+      max,
       offset = 0,
       limit = 100,
       visible = 0
     ) => {
-      const url = `/api/producto?path=PRODUCTO_GET_LIST&offset=${offset}&limit=${limit}&idmarca=${marca}&anio=${anio}&tipoUsado=${tipoUsado}&modelo=${modelo}&visible=${visible}`;
+      const url = `/api/producto?path=PRODUCTO_GET_LIST&offset=${offset}&limit=${limit}&idmarca=${marca}&anio=${anio}&tipoUsado=${tipoUsado}&min=${min}&max=${max}&modelo=${modelo}&visible=${visible}`;
       const resprod = await fetch(url);
       let dataprod = null;
       if (resprod.ok) {
@@ -70,6 +72,15 @@ const APIConsultas = {
       if (resprod.ok) {
         dataprod = await resprod.json();
         return dataprod;
+      }
+    },
+    VALOR_MAX_MIN: async () => {
+      const url = `/api/producto?path=VALOR_MAX_MIN`;
+      const resprod = await fetch(url);
+      let dataprod = null;
+      if (resprod.ok) {
+        dataprod = await resprod.json();
+        return dataprod[0][0];
       }
     },
     ADD: async (producto) => {

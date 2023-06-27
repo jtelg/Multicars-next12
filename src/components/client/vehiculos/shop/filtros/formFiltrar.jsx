@@ -1,17 +1,25 @@
 import React, { useState, useEffect } from "react";
 import APIConsultas from "../../../../../services/consultas";
 import { useRouter } from "next/router";
+import MultiRangeSlider from "./rangeFilter";
 
-const FormFiltro = ({ marcas }) => {
+const FormFiltro = ({ marcas, setOpen = false }) => {
   const router = useRouter();
   const [modelos, setModelos] = useState([]);
-  const [formulario, setFormulario] = useState({});
+  const [formulario, setFormulario] = useState();
+  const [obj_valores, setObj_valores] = useState({});
+  const [loading, setLoading] = useState(true);
 
   useEffect(() => {
     const getFechas = () => {
+      APIConsultas.modelos.VALOR_MAX_MIN().then((resp) => {
+        setObj_valores(resp);
+        setFormulario({ ...formulario, min: resp.minimo, max: resp.maximo });
+        setLoading(false);
+      });
       const n = new Date().getFullYear();
       const select = document.getElementById("anio");
-      for (let i = n; i >= 1995; i--) {
+      for (let i = n; i >= 2005; i--) {
         select.options.add(new Option(i, i));
       }
     };
@@ -30,7 +38,6 @@ const FormFiltro = ({ marcas }) => {
           setModelos(modelo);
         });
         break;
-
       default:
         break;
     }
@@ -43,12 +50,14 @@ const FormFiltro = ({ marcas }) => {
         .map(([clave, valor]) => `${clave}=${valor}`)
         .join("&");
       router.push(`/vehiculos?${cadenaConsulta}`);
+      setOpen && setOpen(false);
     }
   };
 
   const clearForm = (e) => {
     e.preventDefault();
     setFormulario({});
+    setOpen && setOpen(false);
     router.push(`/vehiculos`);
   };
 
@@ -59,10 +68,7 @@ const FormFiltro = ({ marcas }) => {
     >
       <div className="md:flex gap-0 md:gap-8  md:space-y-0 space-y-4">
         <div className="flex flex-col w-full">
-          <label
-            htmlFor="tipoUsado"
-            className="text-white md:text-black font-bold text-sm "
-          >
+          <label htmlFor="tipoUsado" className="text-black font-bold text-sm ">
             Okm/Usado
           </label>
           <select
@@ -78,10 +84,7 @@ const FormFiltro = ({ marcas }) => {
           </select>
         </div>
         <div className="flex flex-col w-full">
-          <label
-            htmlFor="idmarca"
-            className="text-white md:text-black font-bold text-sm "
-          >
+          <label htmlFor="idmarca" className="text-black font-bold text-sm ">
             Marca
           </label>
           <select
@@ -99,10 +102,7 @@ const FormFiltro = ({ marcas }) => {
           </select>
         </div>
         <div className="flex flex-col w-full">
-          <label
-            htmlFor="modelo"
-            className="text-white md:text-black font-bold text-sm"
-          >
+          <label htmlFor="modelo" className="text-black font-bold text-sm">
             Modelo
           </label>
           <select
@@ -121,10 +121,7 @@ const FormFiltro = ({ marcas }) => {
           </select>
         </div>
         <div className="flex flex-col w-full">
-          <label
-            htmlFor="anio"
-            className="text-white md:text-black font-bold text-sm"
-          >
+          <label htmlFor="anio" className="text-black font-bold text-sm">
             Año
           </label>
           <select
@@ -138,31 +135,22 @@ const FormFiltro = ({ marcas }) => {
         </div>
 
         <div className="flex flex-col w-full">
-          <label
-            htmlFor="valor1"
-            className="text-white md:text-black font-bold text-sm"
-          >
-            Valor (no funciona)
+          <label htmlFor="valor1" className="text-black font-bold text-sm">
+            Valor
           </label>
-          <div className="flex items-center justify-between">
-            <select
-              name="valor1"
-              id="valor1"
-              onChange={selectForm}
-              className="rounded-xl py-2 px-1 border-black border w-[45%] md:text-sm"
-            >
-              <option value="minimo">Minimo</option>
-            </select>
-            <b className="text-white md:text-black">-</b>
-            <select
-              name="valor2"
-              id="valor2"
-              onChange={selectForm}
-              className="rounded-xl py-2 px-1 border-black border w-[45%] md:text-sm"
-            >
-              <option value="maximo">Maximo</option>
-            </select>
-          </div>
+          {loading ? (
+            <div className="flex items-center justify-center h-10">
+              <i className="bx bx-loader-circle bx-spin"></i>
+            </div>
+          ) : (
+            <MultiRangeSlider
+              min={obj_valores?.minimo}
+              max={obj_valores?.maximo}
+              setFormulario={setFormulario}
+              formulario={formulario}
+              onChange={({ min, max }) => console.log(min, max)}
+            />
+          )}
         </div>
       </div>
 

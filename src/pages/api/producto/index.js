@@ -13,6 +13,8 @@ export default async function handler(req, res) {
             return ctrlProducto.PRODUCTO_SEARCH(req, res, resolve);
           case "PRODUCTO_X_MARCA":
             return ctrlProducto.PRODUCTO_X_MARCA(req, res, resolve);
+          case "VALOR_MAX_MIN":
+            return ctrlProducto.VALOR_MAX_MIN(req, res, resolve);
         }
         break;
       case "POST":

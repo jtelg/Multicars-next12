@@ -56,7 +56,7 @@ const ServUsos = {
     const msjHTML = new DatosSendMsj();
     msjHTML.to = "felipeballarino97@gmail.com";
     msjHTML.from = obj.email;
-    msjHTML.tema = "Consulta Classer";
+    msjHTML.tema = "Consulta Multicars";
     msjHTML.mensaje = msj;
     axios
       .post(

@@ -75,6 +75,8 @@ const ctrlProducto = {
     const P_modelo = req.query.modelo;
     const P_anio = req.query.anio;
     const P_tipoUsado = req.query.tipoUsado;
+    const P_min = req.query.min;
+    const P_max = req.query.max;
 
     const P_visible =
       req.query.visible !== "-1" ? `(${req.query.visible})` : "(0,1)";
@@ -82,6 +84,7 @@ const ctrlProducto = {
     let sql_modelo = "";
     let sql_anio = "";
     let sql_tipoUsado = "";
+    let sql_rango = "";
     if (P_idmarca !== "0") {
       sql_idmarca = `AND m.idmarca = ${P_idmarca}`;
     }
@@ -93,6 +96,9 @@ const ctrlProducto = {
     }
     if (P_tipoUsado !== "0") {
       sql_tipoUsado = `AND c.nombre = '${P_tipoUsado}'`;
+    }
+    if (P_min !== "0" || P_max !== "0") {
+      sql_rango = `AND (a.precioventa >= ${P_min} AND a.precioventa <= ${P_max})`;
     }
 
     const sql = `
@@ -165,7 +171,7 @@ const ctrlProducto = {
         WHERE a.idcateg = c.idcateg 
         AND a.visible IN ${P_visible} 
         AND a.eliminado = 0
-        ${sql_idmarca} ${sql_modelo} ${sql_anio} ${sql_tipoUsado}
+        ${sql_idmarca} ${sql_modelo} ${sql_anio} ${sql_tipoUsado} ${sql_rango}
         LIMIT
         ${P_offset}, ${P_limite};
   `;
@@ -337,6 +343,10 @@ const ctrlProducto = {
       res.status(500).end();
       return resolve();
     }
+  },
+  VALOR_MAX_MIN: async (_, res, resolve) => {
+    const sql = `CALL SP_get_valorMaxMin()`;
+    APPLY_GET(sql, res, resolve);
   },
 };
 
