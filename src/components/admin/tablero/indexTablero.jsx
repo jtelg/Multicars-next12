@@ -31,10 +31,12 @@ const Tablero = (props) => {
       setLoadingTablero(true);
       setCol_use(columns_prods);
       setobj_use(selectorColumns.prodCol);
-      APIConsultas.modelos.GET_SHOP(0, 0, 0, 0, 0, 100, -1).then((data) => {
-        setLoadingTablero(false);
-        setArr_use(data);
-      });
+      APIConsultas.modelos
+        .GET_SHOP(0, 0, 0, 0, 0, 0, 0, 100, -1)
+        .then((data) => {
+          setLoadingTablero(false);
+          setArr_use(data);
+        });
     }
   }, [props.selector, props.idcajaURL]);
 

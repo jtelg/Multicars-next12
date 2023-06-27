@@ -14,7 +14,7 @@ const WppButton = ({ data }) => {
   return (
     <button
       onClick={(e) => enviarPedido(e, data)}
-      className="bg-green text-white w-full py-2 rounded-lg font-bold text-sm uppercase flex justify-center items-center gap-1"
+      className="bg-[#02b402] text-white w-full py-2 rounded-3xl font-bold text-sm uppercase flex justify-center items-center gap-1"
     >
       Realizanos tu consulta <i className="bx bxl-whatsapp text-2xl"></i>
     </button>

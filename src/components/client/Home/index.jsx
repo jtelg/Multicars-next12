@@ -17,7 +17,7 @@ const HomeComponent = () => {
   const router = useRouter();
   const [arrProductos, setArrProductos] = useState([]);
   useEffect(() => {
-    APIConsultas.modelos.GET_SHOP(0, 0, 0).then((resprod) => {
+    APIConsultas.modelos.GET_SHOP(0, 0, 0, 0, 0, 0).then((resprod) => {
       setArrProductos(resprod);
     });
   }, []);
@@ -60,7 +60,10 @@ const HomeComponent = () => {
               >
                 Quiero vender un auto
               </button>
-              <button className="border-primary border-2 text-primary py-3 text-sm  font-bold  uppercase rounded-lg md:w-1/5">
+              <button
+                onClick={() => router.push("/vehiculos")}
+                className="border-primary border-2 text-primary py-3 text-sm  font-bold  uppercase rounded-lg md:w-1/5"
+              >
                 Quiero comprar un auto
               </button>
             </div>
@@ -101,7 +104,10 @@ const HomeComponent = () => {
             </p>
           </div>
           <div className=" w-full  md:flex md:justify-center">
-            <button className="bg-primary text-white w-full md:w-auto  py-4 md:px-6 font-bold  uppercase rounded-lg text-xs  text-center">
+            <button
+              onClick={() => router.push("/financiacion")}
+              className="bg-primary text-white w-full md:w-auto  py-4 md:px-6 font-bold  uppercase rounded-lg text-xs  text-center"
+            >
               Conoce nuestras opciones de financiación
             </button>
           </div>

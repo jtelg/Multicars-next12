@@ -13,9 +13,10 @@ const ShopPage = () => {
     const modelo = router.query.modelo || 0;
     const anio = router.query.anio || 0;
     const tipoUsado = router.query.tipoUsado || 0;
-
+    const min = router.query.min || 0;
+    const max = router.query.max || 0;
     APIConsultas.modelos
-      .GET_SHOP(marca, modelo, anio, tipoUsado)
+      .GET_SHOP(marca, modelo, anio, tipoUsado, min, max)
       .then((resprod) => {
         setArrProductos(resprod);
         setLoading(false);

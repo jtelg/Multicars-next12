@@ -12,11 +12,6 @@ const CardVehiculos = ({ data }) => {
         const imgs = await APIConsultas.Images.SET_IMAGE(data);
         setArr_imgs(imgs);
         data.images = imgs;
-      } else {
-        const prod = await APIConsultas.Images.SET_ARRCOLOR(data);
-        const images = prod.arrcolor?.reduce((a, b) => a + b.arrimages, "");
-        setArr_imgs(images);
-        data.images = images;
       }
       setProducto({
         ...data,
@@ -29,19 +24,11 @@ const CardVehiculos = ({ data }) => {
       <div className="overflow-hidden rounded-3xl shadow-lg md:max-w-[310px]">
         <Link href={`/vehiculos/${producto?.idart}`}>
           <div className="h-1/2 overflow-hidden">
-            {arr_imgs ? (
-              <img
-                src={arr_imgs[0]}
-                alt="foto"
-                className="w-full h-full object-cover"
-              />
-            ) : (
-              <img
-                src="/media/Car.png"
-                alt="foto"
-                className="w-full h-full object-cover"
-              />
-            )}
+            <img
+              src={arr_imgs[0]}
+              alt="foto"
+              className="w-full h-full object-cover"
+            />
           </div>
           <div className="border-t-black border-t-4 relative h-1/2 flex flex-col justify-between">
             <div className="p-4">

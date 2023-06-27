@@ -1,6 +1,5 @@
 import { useState, useEffect } from "react";
 import ModalList from "../../client/utils/modalList";
-// import ColorForm from "./colorForm";
 import { toast } from "react-toastify";
 import APIConsultas from "../../../services/consultas";
 import ImageForm from "./imageForm";
@@ -24,6 +23,7 @@ const ProductoUpdate = (props) => {
     caja: "",
     km: "",
     motor: "",
+    combustible: "",
     codart: "",
     precioventa: "",
     preciocompra: "",
@@ -69,6 +69,7 @@ const ProductoUpdate = (props) => {
           caja: data_prod.caja,
           km: data_prod.km,
           motor: data_prod.motor,
+          combustible: data_prod.combustible,
           codart: data_prod.codart,
           precioventa: data_prod.precioventa,
           preciocompra: data_prod.preciocompra,
@@ -499,7 +500,7 @@ const ProductoUpdate = (props) => {
                     onChange={onChange}
                   />
                 </div>
-                <div className="grid grid-cols-1 w-1/4">
+                <div className="grid grid-cols-1 mr-3  w-1/4">
                   <label
                     className="uppercase text-sm text-black font-bold md:text-sm text-light"
                     htmlFor="motor"
@@ -514,6 +515,24 @@ const ProductoUpdate = (props) => {
                     value={formulario.motor}
                     onChange={onChange}
                   />
+                </div>
+                <div className="grid grid-cols-1 w-1/4">
+                  <label
+                    className="uppercase text-sm text-black font-bold md:text-sm text-light"
+                    htmlFor="combustible"
+                  >
+                    Combustible
+                  </label>
+                  <select
+                    className="px-3 h-10  border-2 border-black rounded-[20px] mt-1 "
+                    id="combustible"
+                    name="combustible"
+                    value={formulario.combustible}
+                    onChange={onChange}
+                  >
+                    <option value="nafta">Nafta</option>
+                    <option value="gasoil">Gasoil</option>
+                  </select>
                 </div>
               </div>
               <div className="flex mt-5">
@@ -641,42 +660,13 @@ const ProductoUpdate = (props) => {
                     </span>
                   </div>
                 </div>
-                {/* <div className="flex items-center justify-between w-full ">
-                  <div
-                    className={`uppercase h-10  px-4 text-sm
-                    font-bold text-light rounded-[20px]
-                   md:text-sm flex items-center justify-between gap-4
-                   w-full shadow border-2 border-primary ${
-                     formulario.typeCatalog === 1
-                       ? "bg-primary text-white"
-                       : " text-black"
-                   }`}
-                  >
-                    <span
-                      aria-hidden
-                      onClick={(ev) => setValue(ev, "typeCatalog", 1)}
-                      className="h-full w-full flex items-center justify-center cursor-pointer"
-                    >
-                      Colores, images y medida
-                    </span>
-                  </div>
-                </div> */}
               </div>
-              {/* {formulario.typeCatalog === 1 ? (
-                <ColorForm
-                  {...props}
-                  arr_medidas={arr_medidas}
-                  formulario={formulario}
-                  setUpdate={(data) => onChange(data)}
-                />
-              ) : ( */}
               <ImageForm
                 {...props}
                 formulario={formulario}
                 arr_medidas={arr_medidas}
                 setUpdate={(data) => onChange(data)}
               />
-              {/* )} */}
             </div>
           </div>
           <div className="flex items-center justify-start md:gap-8 gap-4 pt-4">

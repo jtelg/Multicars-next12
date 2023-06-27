@@ -24,7 +24,6 @@ const FormCotiza = (props) => {
   const handlerSubmit = (e) => {
     e.preventDefault();
     if (checked) {
-      console.log(formulario);
       Swal.fire({
         icon: "success",
         title: "Mensaje enviado",
