@@ -1,25 +1,16 @@
 import React, { useState, useEffect } from "react";
 import FormCotiza from "../utils/formCotiza";
 import { useRouter } from "next/router";
-import APIConsultas from "../../../services/consultas";
 
 const Formulario = ({ padding }) => {
   const router = useRouter();
-  const [modelos, setModelos] = useState([]);
   const [formulario, setFormulario] = useState({});
-  const [marcas, setMarcas] = useState();
 
   useEffect(() => {
     const getData = () => {
-      let marca = [];
-      APIConsultas.marcas.TODO(true).then((repscateg) => {
-        marca = repscateg;
-        marca.unshift({ idmarca: 0, nombre: "Todos" });
-        setMarcas(marca);
-      });
       const n = new Date().getFullYear();
       const select = document.getElementById("anio");
-      for (let i = n; i >= 1995; i--) {
+      for (let i = n; i >= 2005; i--) {
         select.options.add(new Option(i, i));
       }
     };
@@ -27,21 +18,9 @@ const Formulario = ({ padding }) => {
     getData();
   }, []);
 
-  const selectForm = async (e) => {
-    let modelo = [];
+  const onChange = (e) => {
+    e.preventDefault();
     setFormulario({ ...formulario, [e.target.name]: e.target.value });
-    switch (e.target.name) {
-      case "idmarca":
-        APIConsultas.modelos.GET_SHOP_MARCA(e.target.value).then((resp) => {
-          modelo = resp;
-          modelo.unshift({ idmarca: 0, nombre: "Todos" });
-          setModelos(modelo);
-        });
-        break;
-
-      default:
-        break;
-    }
   };
 
   const handlerSubmit = (e) => {
@@ -64,37 +43,27 @@ const Formulario = ({ padding }) => {
             <label htmlFor="idmarca" className="text-white  font-bold text-sm ">
               Marca
             </label>
-            <select
+            <input
+              type="text"
               name="idmarca"
               id="idmarca"
-              onChange={selectForm}
+              placeholder="Marca del vehiculo"
+              onChange={onChange}
               className="rounded-xl py-2 px-1 border-black border md:text-sm"
-            >
-              <option value="">- seleccione -</option>
-              {marcas?.map((e) => (
-                <option key={e.idmarca} value={e.idmarca}>
-                  {e.nombre}
-                </option>
-              ))}
-            </select>
+            />
           </div>
           <div className="flex flex-col w-full">
             <label htmlFor="modelo" className="text-white  font-bold text-sm">
               Modelo
             </label>
-            <select
+            <input
+              type="text"
               name="modelo"
               id="modelo"
-              onChange={selectForm}
+              placeholder="Modelo del vehiculo"
+              onChange={onChange}
               className="rounded-xl py-2 px-1 border-black border md:text-sm"
-            >
-              <option value="">- seleccione -</option>
-              {modelos?.map((e, i) => (
-                <option key={i} value={e.modelo}>
-                  {e.modelo}
-                </option>
-              ))}
-            </select>
+            />
           </div>
           <div className="flex flex-col w-full">
             <label htmlFor="anio" className="text-white  font-bold text-sm">
@@ -103,7 +72,7 @@ const Formulario = ({ padding }) => {
             <select
               name="anio"
               id="anio"
-              onChange={selectForm}
+              onChange={onChange}
               className="rounded-xl py-2 px-1 border-black border md:text-sm"
             >
               <option value={0}>Todos</option>

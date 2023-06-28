@@ -5,6 +5,7 @@ import { wrapper } from "../redux/store";
 import Session from "../components/client/userSession";
 import { ToastContainer } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
+import WppButton from "../components/client/wppButton";
 
 function MyApp({ Component, pageProps }) {
   pageProps.phone = "54 9 353 6 570 880";
@@ -16,6 +17,7 @@ function MyApp({ Component, pageProps }) {
         <Component {...pageProps} />
       </Navigation>
       {/* footer */}
+      <WppButton />
       <Footer />
       <ToastContainer
         position="bottom-center"

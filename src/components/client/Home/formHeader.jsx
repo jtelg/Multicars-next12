@@ -61,7 +61,7 @@ const FormHeader = () => {
             name="idmarca"
             id="idmarca"
             onChange={selectForm}
-            className="rounded-xl py-2 px-1 border-black border md:text-sm"
+            className="rounded-lg py-2 px-1 border-black border md:text-sm"
           >
             {marcas?.map((e) => (
               <option key={e.idmarca} value={e.idmarca}>
@@ -81,7 +81,7 @@ const FormHeader = () => {
             name="modelo"
             id="modelo"
             onChange={selectForm}
-            className="rounded-xl py-2 px-1 border-black border md:text-sm"
+            className="rounded-lg py-2 px-1 border-black border md:text-sm"
           >
             <option value={0}>Todos</option>
             {modelos?.map((e) => (
@@ -94,7 +94,7 @@ const FormHeader = () => {
         <div className="flex flex-col bg-black col-span-2 md:col-span-1 md:pt-4">
           <input
             type="submit"
-            className="text-white bg-primary h-full rounded-xl text-sm font-bold py-2 md:py-0 uppercase"
+            className="text-white bg-primary h-full rounded-lg text-sm font-bold py-2 md:py-0 uppercase cursor-pointer hover:bg-[#847354] duration-200"
             value="Buscar mi auto"
           />
         </div>
