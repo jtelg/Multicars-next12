@@ -37,8 +37,8 @@ const HomeComponent = () => {
             alt="foto"
             className="md:block hidden w-full h-full object-cover absolute top-0 left-0 "
           />
-          <div className="bg-black text-white pl-5 md:pl-14 pr-20 py-4 md:py-8 relative ">
-            <h1 className="text-xl md:text-3xl  font-bold  uppercase bg-black md:w-[35%]">
+          <div className="bg-black relative flex w-fit titulo1 ">
+            <h1 className="text-white text-xl md:text-3xl  md:w-[65%] font-bold pl-5 md:pl-14 pr-20 py-6 uppercase z-20">
               Encontrá tu auto ideal en menos de un minuto
             </h1>
           </div>
@@ -56,13 +56,13 @@ const HomeComponent = () => {
             <div className="flex flex-col md:flex-row justify-center gap-4 md:gap-5 md:col-span-4 md:mt-8">
               <button
                 onClick={() => router.push("/vende")}
-                className="bg-primary text-white py-3 text-sm font-bold  uppercase rounded-lg md:w-1/5"
+                className="bg-primary text-white py-3 text-sm font-bold  uppercase rounded-lg md:w-1/5 cursor-pointer hover:bg-[#847354] duration-200"
               >
                 Quiero vender un auto
               </button>
               <button
                 onClick={() => router.push("/vehiculos")}
-                className="border-primary border-2 text-primary py-3 text-sm  font-bold  uppercase rounded-lg md:w-1/5"
+                className="border-primary border-2 text-primary py-3 text-sm  font-bold  uppercase rounded-lg md:w-1/5 cursor-pointer bg-white hover:bg-[#efefef] duration-200"
               >
                 Quiero comprar un auto
               </button>
@@ -106,7 +106,7 @@ const HomeComponent = () => {
           <div className=" w-full  md:flex md:justify-center">
             <button
               onClick={() => router.push("/financiacion")}
-              className="bg-primary text-white w-full md:w-auto  py-4 md:px-6 font-bold  uppercase rounded-lg text-xs  text-center"
+              className="bg-primary text-white w-full md:w-auto  py-4 md:px-6 font-bold  uppercase rounded-lg text-xs  text-center cursor-pointer hover:bg-[#847354] duration-200"
             >
               Conoce nuestras opciones de financiación
             </button>

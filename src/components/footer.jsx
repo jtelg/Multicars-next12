@@ -40,8 +40,20 @@ const Footer = () => {
         </div>
       </div>
       <div className="flex justify-center gap-8 text-primary">
-        <i className="bx bxl-instagram text-5xl"></i>
-        <i className="bx bxl-facebook text-5xl"></i>
+        <a
+          target="_blank"
+          href={"https://www.instagram.com/multicars.vm/"}
+          rel="noopener noreferrer"
+        >
+          <i className="bx bxl-instagram text-5xl"></i>
+        </a>
+        <a
+          target="_blank"
+          href={"https://www.facebook.com/multicarsvm"}
+          rel="noopener noreferrer"
+        >
+          <i className="bx bxl-facebook text-5xl"></i>
+        </a>
       </div>
     </div>
   );
