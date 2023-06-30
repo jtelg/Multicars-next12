@@ -75,10 +75,12 @@ const HomeComponent = () => {
         <div className="relative flex flex-col justify-start w-full items-center pt-16 pb-[639px]  text-white">
           <img
             src="https://file.rendit.io/n/tfmjlnpCEwCb2jLVN4Bh.svg"
+            alt="fondo2"
             className="w-[1250px]  h-24 min-h-0 min-w-0 absolute top-0 left-0 md:block hidden"
           />
           <img
             src="https://file.rendit.io/n/Lt6DPeANtRO0I941NZ6j.svg"
+            alt="fondo2"
             className="w-[335px] h-[5.2rem] min-h-0 min-w-0 absolute top-0 left-0 md:hidden block"
           />
           <h1 className="text-center whitespace-nowrap text-4xl  font-bold leading-[48px]   z-10 md:block hidden">
