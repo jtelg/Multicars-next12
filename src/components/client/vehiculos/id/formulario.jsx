@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from "react";
 import Swal from "sweetalert2";
 
-const FormCotiza = () => {
+const FormularioID = () => {
   const [checked, setChecked] = useState(false);
   const [formulario, setFormulario] = useState({
     nombre: "",
@@ -36,19 +36,15 @@ const FormCotiza = () => {
   };
 
   return (
-    <div className="relative flex flex-col justify-start w-full items-center pt-10 pb-[411px] px-[491px]">
-      <img
-        src="https://file.rendit.io/n/TqOJDBBYL7fcOSXccUKW.svg"
-        className="w-[1160px] h-[5.2rem] min-h-0 min-w-0 absolute top-0 left-0"
-      />
-      <h1 className="whitespace-nowrap text-4xl  font-bold leading-[10px] text-white relative">
-        DEJANOS TU CONSULTA
+    <div className="flex flex-col justify-start w-full items-center pt-10 bg-black rounded-[26px]  ">
+      <h1 className="text-center whitespace-nowrap text-xl font-bold text-[#a7916a] relative">
+        COTIZÁ AHORA
       </h1>
       <form
-        className="rounded-br-[26px] w-full h-[419px] bg-black absolute top-20 left-0 flex flex-col justify-start gap-px items-center pt-12 pb-10 "
+        className=" w-full rounded-[26px]  flex flex-col justify-start items-center pt-4 pb-10 bg-black "
         onSubmit={handlerSubmit}
       >
-        <div className="gap-4 grid grid-cols-1 md:grid-cols-3 w-full px-16">
+        <div className="gap-4 grid grid-cols-1 md:grid-cols-3 w-full px-10">
           <div className="flex flex-col">
             <label htmlFor="nombre" className="text-white text-sm font-bold">
               Nombre y Apellido
@@ -135,4 +131,4 @@ const FormCotiza = () => {
   );
 };
 
-export default FormCotiza;
+export default FormularioID;

@@ -11,23 +11,17 @@ const FinanciacionPage = () => {
         <link rel="icon" href="/vector.png" />
       </Head>
       <div className="pt-[75px] bg-white">
-        <div className="relative h-[65vh] md:h-[80vh]">
-          <img
-            src="/media/Portadas.png"
-            alt="foto"
-            className="absolute top-0 left-0 h-full w-full object-cover md:hidden"
-          />
-          <img
-            src="/media/portadaFinanciacion.png"
-            alt="foto"
-            className="absolute top-0 left-0 h-full w-full object-cover hidden md:block"
-          />
-          <div className="relative w-fit flex titulo1">
-            <h1 className="text-white text-xl md:text-3xl font-bold md:pl-14 pl-5 pr-20 py-6 w-[70%] md:w-full z-20">
-              OPCIONES DE FINANCIACIÓN
-            </h1>
+        <div className="md:bg-[url(/media/portadaFinanciacion.png)] bg-[url(/media/Portadas.png)] bg-cover bg-50%_50% bg-blend-normal flex flex-col justify-between pb-5 relative w-full h-[600px] items-center">
+          <div className="relative flex flex-col justify-start pb-24 w-full items-center">
+            <div className="w-[700px] h-24 bg-[url(https://file.rendit.io/n/nQm4sUltux3P4kANJfzo.svg)] bg-cover bg-50%_50% bg-blend-normal absolute top-5 left-0 flex flex-col justify-center pl-16 items-start">
+              <h1 className="whitespace-nowrap text-3xl font-['Montserrat'] font-bold uppercase text-white mr-32 relative">
+                Opciones de financiación
+              </h1>
+            </div>
+            <div className="bg-black relative w-full h-5 shrink-0" />
           </div>
         </div>
+
         <div className="flex flex-col items-center py-16 px-5">
           <h1 className=" text-4xl font-bold text-center mb-8">
             CONOCE NUESTRAS OPCIONES DE FINANCIACION
@@ -51,13 +45,8 @@ const FinanciacionPage = () => {
             </div>
           </div>
         </div>
-        <div className="py-8 pb-14 ">
-          <FormCotiza
-            titulo="DEJANOS TU CONSULTA"
-            mensaje={true}
-            paddingX={"36"}
-            radius={"none"}
-          />
+        <div className="py-8 pb-36 ">
+          <FormCotiza />
         </div>
       </div>
     </>

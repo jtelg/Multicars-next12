@@ -60,7 +60,7 @@ const OrderPending = (props) => {
       <form action="" className="w-full max-w-sm">
         <div className="grid grid-cols-1 mr-3 w-full">
           <label
-            className="text-sm text-gray-500 font-bold text-light"
+            className="text-sm text-white font-bold text-light"
             htmlFor="comentario"
           >
             Horario en el que estará listo el pedido

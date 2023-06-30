@@ -37,10 +37,12 @@ const HomeComponent = () => {
             alt="foto"
             className="md:block hidden w-full h-full object-cover absolute top-0 left-0 "
           />
-          <div className="bg-black relative flex w-fit titulo1 ">
-            <h1 className="text-white text-xl md:text-3xl  md:w-[65%] font-bold pl-5 md:pl-14 pr-20 py-6 uppercase z-20">
-              Encontrá tu auto ideal en menos de un minuto
-            </h1>
+          <div className="bg-[url(https://file.rendit.io/n/4PFx5DH9xjlyc87fbhb0.svg)] bg-cover bg-50%_50% bg-blend-normal self-start flex flex-col justify-center pl-16 relative h-32 shrink-0 items-start">
+            <div className="whitespace-nowrap text-3xl font-['Montserrat'] font-bold uppercase text-white mr-[148px] relative">
+              Encontrá tu auto ideal
+              <br />
+              en menos de un minuto
+            </div>
           </div>
           <FormHeader></FormHeader>
         </div>
@@ -113,7 +115,7 @@ const HomeComponent = () => {
           </div>
         </div>
         {/* encontranos */}
-        <div className="px-5 py-16 space-y-4">
+        <div className="px-16 py-24 space-y-4">
           <h1 className="text-black text-4xl font-bold md:text-center">
             ENCONTRANOS
           </h1>

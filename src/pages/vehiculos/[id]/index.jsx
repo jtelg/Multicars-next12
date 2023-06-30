@@ -2,11 +2,11 @@ import Link from "next/link";
 import React, { useState, useEffect } from "react";
 import Carousel from "../../../components/client/vehiculos/id/carousel";
 import WppButton from "../../../components/client/vehiculos/id/wppButton";
-import FormCotiza from "../../../components/client/utils/formCotiza";
 import { useRouter } from "next/router";
 import APIConsultas from "../../../services/consultas";
 import Loading from "../../../components/client/utils/loading";
 import Head from "next/head";
+import FormularioID from "../../../components/client/vehiculos/id/formulario";
 
 const VehiculoID = () => {
   const router = useRouter();
@@ -44,30 +44,46 @@ const VehiculoID = () => {
         <Loading></Loading>
       ) : (
         <div className="pt-[75px]">
-          <div className="bg-black text-white px-5 md:px-12 py-2 border-b border-b-white">
+          <div className="bg-black flex flex-col justify-center pl-12 relative w-full h-12 items-start">
+            <button className="flex flex-row justify-start relative w-16 items-center">
+              <i className="bx bx-chevron-left text-2xl"></i>
+              Atras
+            </button>
+          </div>
+          {/* <div className="bg-black text-white px-5 md:px-12 py-2">
             <Link
               href={"/vehiculos"}
               className="flex items-center font-medium text-xs"
             >
               <i className="bx bx-chevron-left text-2xl"></i> Atras
             </Link>
+          </div> */}
+          <div className="bg-[url(https://file.rendit.io/n/cd8AJgARACZLGzRsnBQ7.svg)] bg-cover  flex flex-col justify-center pl-16 relative w-[90%] h-[4.9rem] items-start">
+            <h1 className="whitespace-nowrap text-2xl font-bold text-white relative uppercase">
+              {producto?.marca} {producto?.modelo} {producto?.motor}
+            </h1>
           </div>
+          {/* <div className="px-5 md:px-12 bg-black text-white text-2xl font-bold py-4 h-fit">
+            <h1 className=" uppercase">
+              {producto?.marca} {producto?.modelo} {producto?.motor}
+            </h1>
+          </div> */}
           <div>
-            <div className="px-5 md:px-12 bg-black text-white text-2xl font-bold py-4">
-              <h1 className=" uppercase">
-                {producto?.marca} {producto?.modelo} {producto?.motor}
-              </h1>
-            </div>
-            <div className="p-5 md:px-12 space-y-4 md:space-y-0 md:grid md:grid-cols-2 md:grid-rows-3 md:gap-y-8">
+            <div className="p-5 md:px-12 space-y-4 md:space-y-0 md:grid md:grid-cols-2 md:gap-y-8">
               <Carousel
                 arr_imgs={arr_imgs}
                 className=" md:row-span-1  h-fit "
               ></Carousel>
-              <div className="space-y-4 md:row-span-3 md:pl-12 md:h-auto">
+              <div className="space-y-4 md:row-span-3 md:pl-12 md:h-fit">
                 <div className=" shadow-lg rounded-3xl overflow-hidden">
-                  <h1 className="bg-black text-white py-2 px-5 text-2xl font-bold">
-                    Información Técnica
-                  </h1>
+                  <div className="relative flex flex-col justify-end pt-2 w-full items-start">
+                    <div className="w-full h-2 bg-black absolute top-0 left-0" />
+                    <div className="bg-[url(https://file.rendit.io/n/N4ub6mZqhrO1zNMZOsgK.svg)] bg-cover bg-50%_50% bg-blend-normal relative flex flex-col justify-start items-start pt-px pb-[0.4rem] px-5">
+                      <h1 className="text-center whitespace-nowrap text-2xl  font-bold text-white mr-10 relative">
+                        Información Técnica
+                      </h1>
+                    </div>
+                  </div>
                   <ul className="px-5">
                     <li className="w-full flex items-center justify-between py-2 border-b ">
                       <span className="font-medium italic">Año</span>
@@ -99,7 +115,7 @@ const VehiculoID = () => {
                         {producto?.km?.toLocaleString("es-ES", {
                           useGrouping: true,
                           minimumFractionDigits: 0,
-                        })}{" "}
+                        })}
                         km
                       </span>
                     </li>
@@ -111,34 +127,56 @@ const VehiculoID = () => {
                     </li>
                   </ul>
                 </div>
-                <div className="shadow-lg rounded-3xl overflow-hidden">
-                  <h2 className="bg-black px-5 py-2 pl-16 text-white text-2xl font-bold float-right rounded-tl-[50px]">
-                    $
-                    {producto?.precioventa?.toLocaleString("es-ES", {
-                      useGrouping: true,
-                      minimumFractionDigits: 0,
-                    })}
-                  </h2>
+                <div className="shadow-[0px_2px_20px_0px_rgba(0,_0,_0,_0.1)] bg-white relative flex flex-col justify-start pb-2 w-full items-end rounded-3xl overflow-hidden">
+                  <div className="w-full h-2 bg-black absolute top-10 left-0" />
+                  <div className="bg-[url(https://file.rendit.io/n/6t400tEZfWGaeOnT9iBv.svg)] bg-cover bg-50%_50% bg-blend-normal relative flex flex-col justify-end items-end pt-2 px-12">
+                    <h2 className="text-center text-2xl font-['Montserrat'] font-bold text-white ml-4 relative">
+                      $4.500.000
+                    </h2>
+                  </div>
                 </div>
+
                 <div className="py-8">
                   <WppButton data={"FORD KA 1.5 5PTAS AUT"} />
                 </div>
-                <div className="shadow-lg rounded-3xl overflow-hidden h- ">
-                  <h1 className="bg-black text-white py-2 px-5 text-2xl font-bold">
-                    Descripción
-                  </h1>
+                <div className="shadow-[0px_2px_20px_0px_rgba(0,_0,_0,_0.1)] bg-white flex flex-col justify-start gap-5 relative w-full h-[400px] items-center py-2 rounded-3xl overflow-hidden">
+                  <div className="w-full h-[0.6rem] bg-black absolute top-0 left-0" />
+                  <div className="self-start relative flex flex-col justify-start w-[240px] items-start pb-2 px-5">
+                    <img
+                      src="https://file.rendit.io/n/kRrDi0fTgrFhBp5PitZO.svg"
+                      className="w-[240px] h-10 min-h-0 min-w-0 absolute top-px left-0"
+                    />
+                    <div className="text-center text-2xl font-['Montserrat'] font-bold text-white relative">
+                      Descripción
+                    </div>
+                  </div>
+                  <div className="text-sm font-['Montserrat'] font-medium leading-[21px] text-black relative w-5/6">
+                    Lorem ipsum dolor sit amet consectetur. Eleifend mauris id
+                    proin mattis. Tristique amet orci nisi sagittis eu duis et.
+                    Facilisis platea non enim commodo. Vitae eu ac vitae ut
+                    posuere donec. Tempus enim sed luctus massa non pharetra.
+                    Tincidunt eget varius nec nulla euismod integer vestibulum
+                    urna nibh. Ut lacus aenean sem nunc mauris bibendum nulla.
+                    Viverra ornare volutpat massa in.
+                  </div>
+                </div>
+                {/* <div className="shadow-lg rounded-3xl overflow-hidden h- ">
+                  <div className="self-start relative flex flex-col justify-start w-[240px] items-start pb-2 px-5">
+                    <img
+                      src="https://file.rendit.io/n/Eyv5fnOA9WiigBPaP5Ty.svg"
+                      className="w-[240px] h-10 min-h-0 min-w-0 absolute top-px left-0"
+                    />
+                    <div className="text-center text-2xl font-['Montserrat'] font-bold text-white relative">
+                      Descripción
+                    </div>
+                  </div>
                   <p className="p-4 text-sm font-medium md:h-full md:min-h-[200px]">
                     {producto?.descripcion}
                   </p>
-                </div>
+                </div> */}
               </div>
-              <div className="py-8 md:py-0 md:row-span-2 ">
-                <FormCotiza
-                  titulo="COTIZÁ AHORA"
-                  mensaje={true}
-                  paddingX={"12"}
-                  radius={"3xl"}
-                />
+              <div className="py-8 md:py-0 md:row-span-2 h-fit ">
+                <FormularioID />
               </div>
             </div>
           </div>
