@@ -5,7 +5,7 @@ const WppButton = () => {
     <div className="fixed bottom-4 right-4 z-[120]">
       <a
         className="bg-green-500 text-white rounded-full  flex items-center justify-center"
-        href="https://wa.me/5493534140018"
+        href="https://wa.me/5493534221463"
         title="Comunicate con nosotros por whatsapp!"
         id="wppbtn"
         target="_blank"

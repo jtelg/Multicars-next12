@@ -36,19 +36,23 @@ const FormCotiza = () => {
   };
 
   return (
-    <div className="relative flex flex-col justify-start w-full items-center pt-10 pb-[411px] px-[491px]">
+    <div className="relative flex flex-col justify-start w-full items-center pt-10 pb-[411px] md:px-[491px]">
       <img
         src="https://file.rendit.io/n/TqOJDBBYL7fcOSXccUKW.svg"
-        className="w-[1160px] h-[5.2rem] min-h-0 min-w-0 absolute top-0 left-0"
+        className="w-[1160px] h-[5.2rem]  min-h-0 min-w-0 absolute top-0 left-0 md:block hidden"
       />
-      <h1 className="whitespace-nowrap text-4xl  font-bold leading-[10px] text-white relative">
+      <img
+        src="https://file.rendit.io/n/oiDIfc4bD1beYyuefVjR.svg"
+        className=" h-24  min-h-0 min-w-0 absolute top-0 left-0 block md:hidden "
+      />
+      <h1 className="whitespace-nowrap md:text-4xl text-2xl  font-bold leading-[10px] text-white relative">
         DEJANOS TU CONSULTA
       </h1>
       <form
-        className="rounded-br-[26px] w-full h-[419px] bg-black absolute top-20 left-0 flex flex-col justify-start gap-px items-center pt-12 pb-10 "
+        className="rounded-br-[26px] w-full md:h-[419px] h-[500px] bg-black absolute top-20 left-0 flex flex-col justify-start gap-px items-center md:pt-12 pt-4 pb-10 "
         onSubmit={handlerSubmit}
       >
-        <div className="gap-4 grid grid-cols-1 md:grid-cols-3 w-full px-16">
+        <div className="gap-4 grid grid-cols-1 md:grid-cols-3 w-full md:px-16 px-4">
           <div className="flex flex-col">
             <label htmlFor="nombre" className="text-white text-sm font-bold">
               Nombre y Apellido
@@ -105,7 +109,7 @@ const FormCotiza = () => {
             ></textarea>
           </div>
         </div>
-        <div className="flex flex-col gap-4 mt-4 md:items-center w-full">
+        <div className="flex flex-col gap-4 mt-4 md:items-center w-full px-4">
           <div className="flex items-center gap-1">
             <input
               type="checkbox"

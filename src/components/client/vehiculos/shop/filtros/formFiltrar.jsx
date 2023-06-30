@@ -154,7 +154,7 @@ const FormFiltro = ({ marcas, setOpen = false }) => {
         </div>
       </div>
 
-      <div className="flex flex-col md:flex-row-reverse gap-4 mt-8">
+      <div className="flex flex-col md:flex-row-reverse gap-4 md:mt-8 mt-12">
         <input
           type="submit"
           className="bg-primary text-white uppercase py-2 font-bold rounded-lg md:px-8 md:text-xs"

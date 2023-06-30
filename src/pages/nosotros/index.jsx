@@ -11,10 +11,10 @@ const NosotrosPage = () => {
         <link rel="icon" href="/vector.png" />
       </Head>
       <div className="pt-[75px] bg-white">
-        <div className="md:bg-[url(/media/portadaFinanciacion.png)] bg-[url(/media/Portadas.png)] bg-cover bg-50%_50% bg-blend-normal flex flex-col justify-start relative w-full h-[700px] items-center">
-          <div className="bg-black relative w-full h-5 shrink-0" />
-          <div className="w-[750px] bg-[url(https://file.rendit.io/n/vBFWpPXzofi1EoiZrCGd.svg)] bg-cover bg-50%_50% bg-blend-normal self-start flex flex-col justify-center mb-[350px] pl-16 relative h-36 shrink-0 items-start">
-            <h1 className="text-3xl  font-bold text-white  relative w-4/5">
+        <div className="md:bg-[url(/media/portadaFinanciacion.png)] bg-[url(/media/Portadas.png)] bg-cover flex flex-col justify-start relative w-full md:h-[700px] h-[450px] items-center">
+          <div className="bg-black relative w-full h-5 " />
+          <div className="md:w-[750px] md:bg-[url(https://file.rendit.io/n/vBFWpPXzofi1EoiZrCGd.svg)] bg-[url(https://file.rendit.io/n/8hTFeYMR5KK1JNULLZdm.svg)] bg-cover  self-start flex flex-col justify-center mb-[350px] md:pl-16 relative md:h-36 h-[5.2rem]  pl-4  items-start    w-full ">
+            <h1 className="md:text-3xl text-xl  font-bold text-white  relative w-4/5">
               EMPRESA PERTENECIENTE <br />
               AL GRUPO LE PARC
             </h1>

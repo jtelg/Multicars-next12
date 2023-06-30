@@ -13,9 +13,9 @@ const VendeAuto = () => {
       <div className="pt-[75px] bg-white">
         <div className="flex flex-col justify-start relative w-full items-center">
           <div className="bg-black relative w-full h-5" />
-          <div className="md:bg-[url(/media/portadaNosotros.png)] bg-[url(/media/PortadaVende.png)] bg-cover bg-50%_50% bg-blend-normal flex flex-col justify-start relative w-full h-[600px] shrink-0 items-start">
-            <div className="bg-[url(https://file.rendit.io/n/pXRiIiuAUbsoLUueb6CT.svg)] bg-cover bg-50%_50% bg-blend-normal flex flex-col justify-start relative h-32 shrink-0 items-start pt-6 pb-8 pl-16">
-              <h1 className="whitespace-nowrap text-3xl  font-bold uppercase text-white mr-[145px] relative">
+          <div className="md:bg-[url(/media/portadaNosotros.png)] bg-[url(/media/PortadaVende.png)] bg-cover flex flex-col justify-start relative w-full md:h-[600px] h-[450px]  items-start  ">
+            <div className="md:bg-[url(https://file.rendit.io/n/pXRiIiuAUbsoLUueb6CT.svg)] bg-[url(https://file.rendit.io/n/IYF7rKcZSyH4tqRcJ8K7.svg)] bg-cover flex flex-col md:justify-start justify-center  relative md:h-32 h-24  pt-6 pb-8 md:pl-16  pl-4   items-start">
+              <h1 className="whitespace-nowrap md:text-3xl text-xl  font-bold uppercase text-white mr-[145px] relative">
                 Vendé tu usado <br />
                 en Multicars.
               </h1>
@@ -33,15 +33,19 @@ const VendeAuto = () => {
           ></iframe>
         </div>
 
-        <div className="relative flex flex-col justify-start w-full items-center pt-10 pb-[414px] px-[560px] my-20">
+        <div className="relative flex flex-col justify-start w-full items-center pt-10 md:pb-[414px] pb-[660px] md:px-[560px] my-20">
           <img
             src="https://file.rendit.io/n/VZJqvXFXEwmgHdsywDhX.svg"
-            className="w-[1150px] h-[5.2rem] min-h-0 min-w-0 absolute top-0 left-0"
+            className="w-[1150px] h-[5.2rem] min-h-0 min-w-0 absolute top-0 left-0 md:block hidden"
+          />
+          <img
+            src="https://file.rendit.io/n/5kBOjudBoAUcdKbDTLJr.svg"
+            className="w-[405px] h-22 min-h-0 min-w-0 absolute top-0 left-0 md:hidden block"
           />
           <h1 className="whitespace-nowrap text-4xl  font-bold leading-[10px] text-white relative">
             COTIZÁ TU AUTO
           </h1>
-          <div className="rounded-br-[26px] w-full h-[419px] bg-black absolute top-20 left-0 flex flex-col justify-start  items-center pt-12 pb-10 ">
+          <div className="rounded-br-[26px] w-full md:h-[419px] h-[660px] bg-black absolute top-20 left-0 flex flex-col justify-start  items-center md:pt-12 pt-4 pb-10 ">
             <span className="text-primary font-bold text-sm md:text-base flex justify-center mb-4 ">
               Para comenzar contanos cuál es tu auto
             </span>

@@ -21,13 +21,13 @@ const CardVehiculos = ({ data }) => {
   }, [data]);
   return (
     <>
-      <div className="shadow-[0px_2px_20px_0px_rgba(0,_0,_0,_0.1)] bg-white flex flex-col justify-start relative w-full max-w-[300px]  items-center rounded-3xl overflow-hidden ">
-        <Link href={`/vehiculos/${producto?.idart}`}>
+      <div className="shadow-[0px_2px_20px_0px_rgba(0,_0,_0,_0.1)] bg-white flex flex-col justify-start relative w-full max-w-full md:max-w-[300px]  items-center rounded-3xl overflow-hidden ">
+        <Link href={`/vehiculos/${producto?.idart}`} className="w-full">
           <div className="overflow-hidden">
             <img
               src={arr_imgs[0]}
               alt="foto"
-              className="min-h-0 min-w-0 relative aspect-video object-cover"
+              className=" w-full relative aspect-video object-cover"
             />
           </div>
           <div className="border-t-black border-t-4 relative   flex flex-col justify-between gap-1">

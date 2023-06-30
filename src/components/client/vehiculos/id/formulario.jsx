@@ -44,7 +44,7 @@ const FormularioID = () => {
         className=" w-full rounded-[26px]  flex flex-col justify-start items-center pt-4 pb-10 bg-black "
         onSubmit={handlerSubmit}
       >
-        <div className="gap-4 grid grid-cols-1 md:grid-cols-3 w-full px-10">
+        <div className="gap-4 grid grid-cols-1 md:grid-cols-3 w-full md:px-10 px-8">
           <div className="flex flex-col">
             <label htmlFor="nombre" className="text-white text-sm font-bold">
               Nombre y Apellido
@@ -101,7 +101,7 @@ const FormularioID = () => {
             ></textarea>
           </div>
         </div>
-        <div className="flex flex-col gap-4 mt-4 md:items-center w-full">
+        <div className="flex flex-col gap-4 mt-4 md:items-center w-full md:px-10 px-8">
           <div className="flex items-center gap-1">
             <input
               type="checkbox"

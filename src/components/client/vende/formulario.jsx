@@ -51,7 +51,7 @@ const Formulario = ({ padding }) => {
     }
   };
   return (
-    <div className="w-full px-16">
+    <div className="w-full md:px-16 px-4">
       <form
         onSubmit={handlerSubmit}
         className={`w-full md:flex md:flex-col ${padding} pb-8 `}
@@ -101,10 +101,10 @@ const Formulario = ({ padding }) => {
           </div>
         </div>
 
-        <span className="text-primary px-5 text-sm md:text-base font-bold md:flex md:w-full md:justify-center">
+        <span className="text-primary md:px-5 text-sm  md:text-base font-bold md:flex md:w-full md:justify-center text-center">
           Por útlimo necesitamos que ingreses tus datos
         </span>
-        <div className="gap-4 grid grid-cols-1 md:grid-cols-3 ">
+        <div className="gap-4 grid grid-cols-1 md:grid-cols-3 mt-4 ">
           <div className="flex flex-col">
             <label htmlFor="nombre" className="text-white text-sm font-bold">
               Nombre y Apellido

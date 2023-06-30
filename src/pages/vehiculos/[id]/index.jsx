@@ -160,20 +160,6 @@ const VehiculoID = () => {
                     Viverra ornare volutpat massa in.
                   </div>
                 </div>
-                {/* <div className="shadow-lg rounded-3xl overflow-hidden h- ">
-                  <div className="self-start relative flex flex-col justify-start w-[240px] items-start pb-2 px-5">
-                    <img
-                      src="https://file.rendit.io/n/Eyv5fnOA9WiigBPaP5Ty.svg"
-                      className="w-[240px] h-10 min-h-0 min-w-0 absolute top-px left-0"
-                    />
-                    <div className="text-center text-2xl font-['Montserrat'] font-bold text-white relative">
-                      Descripción
-                    </div>
-                  </div>
-                  <p className="p-4 text-sm font-medium md:h-full md:min-h-[200px]">
-                    {producto?.descripcion}
-                  </p>
-                </div> */}
               </div>
               <div className="py-8 md:py-0 md:row-span-2 h-fit ">
                 <FormularioID />
