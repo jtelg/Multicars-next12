@@ -17,7 +17,7 @@ const Navigation = (props) => {
         <MobileNav items={navigateItems} />
         <Desktop items={navigateItems} />
       </div>
-      <div className="bg-gray-50 w-full">{props.children}</div>
+      <div className="w-full">{props.children}</div>
     </>
   );
 };

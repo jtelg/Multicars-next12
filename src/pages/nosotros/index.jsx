@@ -11,23 +11,16 @@ const NosotrosPage = () => {
         <link rel="icon" href="/vector.png" />
       </Head>
       <div className="pt-[75px] bg-white">
-        <div className="relative h-[65vh]  md:h-[80vh]">
-          <img
-            src="/media/Portadas.png"
-            alt="foto"
-            className="absolute top-0 left-0 h-full w-full object-cover md:hidden"
-          />
-          <img
-            src="/media/portadaFinanciacion.png"
-            alt="foto"
-            className="absolute top-0 left-0 h-full w-full object-cover hidden md:block"
-          />
-          <div className=" relative flex w-fit titulo1">
-            <h1 className="text-white text-xl md:text-3xl  md:w-[70%] w-full font-bold md:pl-14 pl-5 py-6 z-20">
-              MULTICARS EMPRESA PERTENECIENTE AL GRUPO LE PARC
+        <div className="md:bg-[url(/media/portadaFinanciacion.png)] bg-[url(/media/Portadas.png)] bg-cover flex flex-col justify-start relative w-full md:h-[700px] h-[450px] items-center">
+          <div className="bg-black relative w-full h-5 " />
+          <div className="md:w-[750px] md:bg-[url(https://file.rendit.io/n/vBFWpPXzofi1EoiZrCGd.svg)] bg-[url(https://file.rendit.io/n/8hTFeYMR5KK1JNULLZdm.svg)] bg-cover  self-start flex flex-col justify-center mb-[350px] md:pl-16 relative md:h-36 h-[5.2rem]  pl-4  items-start    w-full ">
+            <h1 className="md:text-3xl text-xl  font-bold text-white  relative w-4/5">
+              EMPRESA PERTENECIENTE <br />
+              AL GRUPO LE PARC
             </h1>
           </div>
         </div>
+
         <div className="flex flex-col items-center py-16 px-5 md:px-12">
           <h1 className=" text-4xl font-bold text-center mb-8">
             ¿PORQUÉ ELEGIR MULTICARS?
@@ -61,15 +54,6 @@ const NosotrosPage = () => {
             </div>
           </div>
           <div className="p-5 md:p-12  py-14 space-y-8 md:space-y-0 flex flex-col justify-center md:flex-row md:gap-12 w-full">
-            {/* <p className=" text-sm md:text-base font-medium leading-5 md:w-1/2">
-          Lorem ipsum dolor sit amet consectetur. Eleifend mauris id proin
-          mattis. Tristique amet orci nisi sagittis eu duis et. Facilisis platea
-          non enim commodo. Vitae eu ac vitae ut posuere donec. Tempus enim sed
-          luctus massa non pharetra. Tincidunt eget varius nec nulla euismod
-          integer vestibulum urna nibh. Ut lacus aenean sem nunc mauris bibendum
-          nulla. Viverra ornare volutpat massa in. Dolor pretium sociis lobortis
-          ac.
-        </p> */}
             <iframe
               src="https://www.youtube.com/embed/wNV4C4heTNE"
               title="YouTube video player"
@@ -79,7 +63,7 @@ const NosotrosPage = () => {
               className="w-full h-[200px] md:h-[400px] rounded-3xl md:w-1/2"
             ></iframe>
           </div>
-          <div className="space-y-4">
+          <div className="space-y-4 w-full mt-12">
             <h1 className="text-black text-4xl font-bold md:text-center">
               ENCONTRANOS
             </h1>

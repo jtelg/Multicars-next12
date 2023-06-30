@@ -11,33 +11,18 @@ const VendeAuto = () => {
         <link rel="icon" href="/vector.png" />
       </Head>
       <div className="pt-[75px] bg-white">
-        <div className="relative h-[47vh]  md:h-[80vh]">
-          <img
-            src="/media/PortadaVende.png"
-            alt="foto"
-            className="md:hidden absolute top-0 left-0 h-full w-full object-cover"
-          />
-          <img
-            src="/media/portadaNosotros.png"
-            alt="foto"
-            className="hidden md:block absolute top-0 left-0 h-full w-full object-cover"
-          />
-          <div className="bg-black relative flex w-fit  md:titulo1 tituloMobile">
-            <h1 className="text-white text-xl md:text-3xl  md:w-[65%] font-bold pl-5 md:pl-14 pr-20 py-6 uppercase z-20">
-              Vendé tu usado en Multicars.
-            </h1>
+        <div className="flex flex-col justify-start relative w-full items-center">
+          <div className="bg-black relative w-full h-5" />
+          <div className="md:bg-[url(/media/portadaNosotros.png)] bg-[url(/media/PortadaVende.png)] bg-cover flex flex-col justify-start relative w-full md:h-[600px] h-[450px]  items-start  ">
+            <div className="md:bg-[url(https://file.rendit.io/n/pXRiIiuAUbsoLUueb6CT.svg)] bg-[url(https://file.rendit.io/n/IYF7rKcZSyH4tqRcJ8K7.svg)] bg-cover flex flex-col md:justify-start justify-center  relative md:h-32 h-24  pt-6 pb-8 md:pl-16  pl-4   items-start">
+              <h1 className="whitespace-nowrap md:text-3xl text-xl  font-bold uppercase text-white mr-[145px] relative">
+                Vendé tu usado <br />
+                en Multicars.
+              </h1>
+            </div>
           </div>
         </div>
         <div className="p-5 md:p-12 space-y-8 md:space-y-0 flex flex-col justify-center md:flex-row md:gap-12">
-          {/* <p className=" text-sm md:text-base font-medium leading-5 md:w-1/2">
-          Lorem ipsum dolor sit amet consectetur. Eleifend mauris id proin
-          mattis. Tristique amet orci nisi sagittis eu duis et. Facilisis platea
-          non enim commodo. Vitae eu ac vitae ut posuere donec. Tempus enim sed
-          luctus massa non pharetra. Tincidunt eget varius nec nulla euismod
-          integer vestibulum urna nibh. Ut lacus aenean sem nunc mauris bibendum
-          nulla. Viverra ornare volutpat massa in. Dolor pretium sociis lobortis
-          ac.
-        </p> */}
           <iframe
             src="https://www.youtube.com/embed/wNV4C4heTNE"
             title="YouTube video player"
@@ -47,15 +32,25 @@ const VendeAuto = () => {
             className="w-full h-[200px] md:h-[400px] rounded-3xl md:w-1/2"
           ></iframe>
         </div>
-        <div className="py-12">
-          <div className="bg-black py-10 rounded-br-3xl ">
-            <div className="text-center py-4">
-              <h1 className="text-white font-bold text-4xl">COTIZÁ TU AUTO</h1>
-            </div>
+
+        <div className="relative flex flex-col justify-start w-full items-center pt-10 md:pb-[414px] pb-[660px] md:px-[560px] my-20">
+          <img
+            src="https://file.rendit.io/n/VZJqvXFXEwmgHdsywDhX.svg"
+            className="w-[1150px] h-[5.2rem] min-h-0 min-w-0 absolute top-0 left-0 md:block hidden"
+          />
+          <img
+            src="https://file.rendit.io/n/5kBOjudBoAUcdKbDTLJr.svg"
+            className="w-[405px] h-22 min-h-0 min-w-0 absolute top-0 left-0 md:hidden block"
+          />
+          <h1 className="whitespace-nowrap text-4xl  font-bold leading-[10px] text-white relative">
+            COTIZÁ TU AUTO
+          </h1>
+          <div className="rounded-br-[26px] w-full md:h-[419px] h-[660px] bg-black absolute top-20 left-0 flex flex-col justify-start  items-center md:pt-12 pt-4 pb-10 ">
             <span className="text-primary font-bold text-sm md:text-base flex justify-center mb-4 ">
               Para comenzar contanos cuál es tu auto
             </span>
-            <Formulario padding={"md:px-36 px-5"} />
+
+            <Formulario padding={"md:px-0 px-5"} />
           </div>
         </div>
       </div>

@@ -5,7 +5,7 @@ const WppButton = ({ data }) => {
   const enviarPedido = async (ev, nombre) => {
     ev.preventDefault();
     try {
-      senderFRONT.enviaPedido("3534196213", nombre);
+      senderFRONT.enviaPedido("3534221463", nombre);
     } catch (error) {
       console.error("alta de venta ", error);
     }

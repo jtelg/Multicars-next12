@@ -18,7 +18,7 @@ const MobileNav = ({ items }) => {
         </Link>
         <BurgerButton></BurgerButton>
       </div>
-      <nav className="menuppal ">
+      <nav className=" menuppal bg-[url(https://file.rendit.io/n/nkbRW4bW7S93kAUDGB78.svg)] bg-cover  flex flex-col justify-center  w-full h-[290px] items-center">
         <ul>
           {items.map((e, i) => (
             <li key={i} className="font-medium bg-black">
@@ -41,13 +41,9 @@ const MobileNav = ({ items }) => {
           z-index: 50;
         }
         .menuppal {
-          border-radius: 10% 0% 29% 0% / 0% 49% 38% 31%;
-          background-color: #000000;
           bottom: 0;
           width: 100%;
-          height: fit-content;
           left: 0;
-          overflow-y: scroll;
           position: fixed;
           top: 70px;
           transform: translate3d(0px, -100%, 0px);
