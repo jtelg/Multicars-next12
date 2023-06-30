@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from "react";
+import React, { useState } from "react";
 import Swal from "sweetalert2";
 
 const FormCotiza = () => {
@@ -39,10 +39,12 @@ const FormCotiza = () => {
     <div className="relative flex flex-col justify-start w-full items-center pt-10 pb-[411px] md:px-[491px]">
       <img
         src="https://file.rendit.io/n/TqOJDBBYL7fcOSXccUKW.svg"
+        alt="fondo"
         className="w-[1160px] h-[5.2rem]  min-h-0 min-w-0 absolute top-0 left-0 md:block hidden"
       />
       <img
         src="https://file.rendit.io/n/oiDIfc4bD1beYyuefVjR.svg"
+        alt="fondo2"
         className=" h-24  min-h-0 min-w-0 absolute top-0 left-0 block md:hidden "
       />
       <h1 className="whitespace-nowrap md:text-4xl text-2xl  font-bold leading-[10px] text-white relative">

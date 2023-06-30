@@ -29,7 +29,7 @@ const VehiculoID = () => {
       }
     };
     fetchData();
-  }, []);
+  }, [router]);
 
   return (
     <>
@@ -44,20 +44,20 @@ const VehiculoID = () => {
         <Loading></Loading>
       ) : (
         <div className="pt-[75px]">
-          <div className="bg-black flex flex-col justify-center pl-12 relative w-full h-12 items-start">
+          {/* <div className="bg-black flex flex-col justify-center pl-12 relative w-full h-12 items-start">
             <button className="flex flex-row justify-start relative w-16 items-center">
               <i className="bx bx-chevron-left text-2xl"></i>
               Atras
             </button>
-          </div>
-          {/* <div className="bg-black text-white px-5 md:px-12 py-2">
+          </div> */}
+          <div className="bg-black text-white px-5 md:px-12 py-2">
             <Link
               href={"/vehiculos"}
               className="flex items-center font-medium text-xs"
             >
               <i className="bx bx-chevron-left text-2xl"></i> Atras
             </Link>
-          </div> */}
+          </div>
           <div className="bg-[url(https://file.rendit.io/n/cd8AJgARACZLGzRsnBQ7.svg)] bg-cover  flex flex-col justify-center pl-16 relative w-[90%] h-[4.9rem] items-start">
             <h1 className="whitespace-nowrap text-2xl font-bold text-white relative uppercase">
               {producto?.marca} {producto?.modelo} {producto?.motor}
@@ -144,6 +144,7 @@ const VehiculoID = () => {
                   <div className="self-start relative flex flex-col justify-start w-[240px] items-start pb-2 px-5">
                     <img
                       src="https://file.rendit.io/n/kRrDi0fTgrFhBp5PitZO.svg"
+                      alt="fondo3"
                       className="w-[240px] h-10 min-h-0 min-w-0 absolute top-px left-0"
                     />
                     <div className="text-center text-2xl font-['Montserrat'] font-bold text-white relative">

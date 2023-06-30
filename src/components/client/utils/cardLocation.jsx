@@ -10,6 +10,7 @@ const CardLocation = () => {
             <img
               src="https://file.rendit.io/n/MohiFmy4WzFBEuHMoqt8.png"
               className="w-[339px] h-[210px] min-h-0 min-w-0 absolute top-0 left-0"
+              alt="fotomapa"
             />
             <div className="bg-[url(https://file.rendit.io/n/PrWGjRSvnp0M02x09yEc.png)] bg-cover  relative flex flex-col justify-start w-full items-start pb-64 px-4">
               <div className="w-[17rem] h-16 bg-[url(https://file.rendit.io/n/F2VykygJuUVIrM0qY8sV.svg)] bg-cover  absolute top-0 left-0 flex flex-col justify-center pl-4 items-start">
@@ -28,6 +29,7 @@ const CardLocation = () => {
               allowfullscreen=""
               className="w-full h-full"
               loading="lazy"
+              title="mapa1"
               referrerpolicy="no-referrer-when-downgrade"
             ></iframe>
           </div>
@@ -55,6 +57,7 @@ const CardLocation = () => {
               allowfullscreen=""
               loading="lazy"
               referrerpolicy="no-referrer-when-downgrade"
+              title="mapa2"
             ></iframe>
           </div>
         </div>
