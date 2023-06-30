@@ -36,10 +36,12 @@ const VendeAuto = () => {
         <div className="relative flex flex-col justify-start w-full items-center pt-10 md:pb-[414px] pb-[660px] md:px-[560px] my-20">
           <img
             src="https://file.rendit.io/n/VZJqvXFXEwmgHdsywDhX.svg"
+            alt="fondo2"
             className="w-[1150px] h-[5.2rem] min-h-0 min-w-0 absolute top-0 left-0 md:block hidden"
           />
           <img
             src="https://file.rendit.io/n/5kBOjudBoAUcdKbDTLJr.svg"
+            alt="fondo2"
             className="w-[405px] h-22 min-h-0 min-w-0 absolute top-0 left-0 md:hidden block"
           />
           <h1 className="whitespace-nowrap text-4xl  font-bold leading-[10px] text-white relative">
