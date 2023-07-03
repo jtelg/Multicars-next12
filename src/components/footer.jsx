@@ -5,7 +5,7 @@ const Footer = () => {
     <div className="relative flex flex-col md:justify-end justify-start pt-20 w-full items-center ">
       <div className="md:w-[1000px] h-20 md:bg-[url(https://file.rendit.io/n/Xhu2gcpuEqtFcOLRmuKH.svg)] bg-[url(https://file.rendit.io/n/gb4aEj6vCRigUBo9o6aZ.svg)] bg-cover md:absolute relative top-0 md:left-[calc(100%-1000px)] flex flex-col md:justify-end justify-center md:items-start items-end md:pl-48 pl-28 py-4 self-end  pr-12  w-5/6  shrink-0 ">
         <img
-          src="/media/logoMulti.png"
+          src="/media/logomulti.png"
           className=" md:mr-[627px] relative"
           alt="fondo2"
         />
