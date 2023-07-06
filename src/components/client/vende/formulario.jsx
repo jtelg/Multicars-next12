@@ -1,16 +1,10 @@
 import React, { useState, useEffect } from "react";
 import Swal from "sweetalert2";
+import { sendPilotMsg } from "../../../utils/pilot";
 
 const Formulario = ({ padding }) => {
+  // cotiza tu auto
   const [checked, setChecked] = useState(false);
-  const [formulario, setFormulario] = useState({
-    nombre: "",
-    telefono: "",
-    email: "",
-    marca: "",
-    modelo: "",
-    anio: "",
-  });
 
   useEffect(() => {
     const getData = () => {
@@ -24,27 +18,18 @@ const Formulario = ({ padding }) => {
     getData();
   }, []);
 
-  const onChange = (e) => {
-    e.preventDefault();
-    setFormulario({ ...formulario, [e.target.name]: e.target.value });
-  };
-
-  const handlerSubmit = (e) => {
+  const handlerSubmit = async (e) => {
     e.preventDefault();
     if (checked) {
+      const form = Object.fromEntries(new FormData(e.target));
+      form.url = "/vende";
+      const data = await sendPilotMsg(form);
+      console.log(data);
       Swal.fire({
         icon: "success",
         title: "Mensaje enviado",
         showConfirmButton: false,
         timer: 1000,
-      });
-      setFormulario({
-        nombre: "",
-        telefono: "",
-        email: "",
-        marca: "",
-        modelo: "",
-        anio: "",
       });
     } else {
       Swal.fire("Debe aceptar las politicas de privacidad");
@@ -66,8 +51,6 @@ const Formulario = ({ padding }) => {
               name="marca"
               id="marca"
               placeholder="Marca del vehiculo"
-              onChange={onChange}
-              value={formulario.marca}
               className="rounded-xl py-2 px-1 border-black border md:text-sm"
             />
           </div>
@@ -80,8 +63,6 @@ const Formulario = ({ padding }) => {
               name="modelo"
               id="modelo"
               placeholder="Modelo del vehiculo"
-              onChange={onChange}
-              value={formulario.modelo}
               className="rounded-xl py-2 px-1 border-black border md:text-sm"
             />
           </div>
@@ -92,8 +73,6 @@ const Formulario = ({ padding }) => {
             <select
               name="anio"
               id="anio"
-              onChange={onChange}
-              value={formulario.anio}
               className="rounded-xl py-2 px-1 border-black border md:text-sm"
             >
               <option value={0}>Todos</option>
@@ -114,8 +93,6 @@ const Formulario = ({ padding }) => {
               placeholder="Todos"
               name="nombre"
               id="nombre"
-              value={formulario.nombre}
-              onChange={onChange}
               className=" rounded-lg py-1 md:py-2 px-2 text-sm"
             />
           </div>
@@ -128,8 +105,6 @@ const Formulario = ({ padding }) => {
               placeholder="Todos"
               name="telefono"
               id="telefono"
-              value={formulario.telefono}
-              onChange={onChange}
               className=" rounded-lg py-1 md:py-2  px-2 text-sm"
             />
           </div>
@@ -142,8 +117,6 @@ const Formulario = ({ padding }) => {
               placeholder="Todos"
               name="email"
               id="email"
-              value={formulario.email}
-              onChange={onChange}
               className=" rounded-lg py-1 md:py-2 px-2 text-sm"
             />
           </div>

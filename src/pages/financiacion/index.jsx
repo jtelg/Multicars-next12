@@ -1,5 +1,5 @@
 import React from "react";
-import FormCotiza from "../../components/client/utils/formCotiza";
+import FormContacto from "../../components/client/utils/formContacto";
 import Head from "next/head";
 
 const FinanciacionPage = () => {
@@ -46,7 +46,7 @@ const FinanciacionPage = () => {
           </div>
         </div>
         <div className="py-8 pb-36 ">
-          <FormCotiza />
+          <FormContacto />
         </div>
       </div>
     </>

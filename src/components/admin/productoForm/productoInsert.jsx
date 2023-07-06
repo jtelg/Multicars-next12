@@ -26,7 +26,7 @@ const ProductoUpdate = (props) => {
     codart: "",
     precioventa: "",
     preciocompra: "",
-    moneda: "peso",
+    moneda: "ARS",
     descripcion: "",
     descripBreve: "",
   });
@@ -198,8 +198,8 @@ const ProductoUpdate = (props) => {
                     onChange={onChange}
                     required={true}
                   >
-                    <option value="peso">Pesos</option>
-                    <option value="usd">Dolar</option>
+                    <option value="ARS">Pesos</option>
+                    <option value="USD">Dolar</option>
                   </select>
                 </div>
                 <div className="grid grid-cols-1 mr-3 w-full">

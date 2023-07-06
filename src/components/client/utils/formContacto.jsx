@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 import Swal from "sweetalert2";
 
-const FormCotiza = () => {
+const FormContacto = () => {
   const [checked, setChecked] = useState(false);
   const [formulario, setFormulario] = useState({
     nombre: "",
@@ -141,4 +141,4 @@ const FormCotiza = () => {
   );
 };
 
-export default FormCotiza;
+export default FormContacto;

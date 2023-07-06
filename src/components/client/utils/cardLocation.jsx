@@ -26,7 +26,7 @@ const CardLocation = () => {
           <div className="w-full md:h-[300px] h-[250px]">
             <iframe
               src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3367.734577413627!2d-63.202448724698264!3d-32.42626714579537!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x95cc69ac9ed3f189%3A0x37caf8ec842dbb30!2sMulticars%200km%26Usados%20de%20selecci%C3%B3n!5e0!3m2!1sen!2sar!4v1688135081041!5m2!1sen!2sar"
-              allowfullscreen=""
+              allowFullScreen
               className="w-full h-full"
               loading="lazy"
               title="mapa1"
@@ -54,7 +54,7 @@ const CardLocation = () => {
             <iframe
               src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3341.3403849584247!2d-64.38585302466302!3d-33.12642108099056!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x95d20174da85af9d%3A0xf340c89a4aca2bd!2sMulticars!5e0!3m2!1sen!2sar!4v1688135655662!5m2!1sen!2sar"
               className="w-full h-full"
-              allowfullscreen=""
+              allowFullScreen
               loading="lazy"
               referrerpolicy="no-referrer-when-downgrade"
               title="mapa2"
