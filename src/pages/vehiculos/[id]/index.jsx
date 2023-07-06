@@ -163,7 +163,7 @@ const VehiculoID = () => {
                 </div>
               </div>
               <div className="py-8 md:py-0 md:row-span-2 h-fit ">
-                <FormularioID />
+                <FormularioID producto={producto} />
               </div>
             </div>
           </div>

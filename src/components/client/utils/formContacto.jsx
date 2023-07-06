@@ -1,37 +1,31 @@
 import React, { useState } from "react";
 import Swal from "sweetalert2";
+import { sendPilotMsg } from "../../../utils/pilot";
+import { useRouter } from "next/router";
+import LoadingButton from "./loadingButton";
 
 const FormContacto = () => {
   const [checked, setChecked] = useState(false);
-  const [formulario, setFormulario] = useState({
-    nombre: "",
-    telefono: "",
-    email: "",
-    mensaje: "",
-  });
-
-  const onChange = (e) => {
+  const [loading, setLoading] = useState(false);
+  const route = useRouter();
+  const handlerSubmit = async (e) => {
     e.preventDefault();
-    setFormulario({ ...formulario, [e.target.name]: e.target.value });
-  };
-
-  const handlerSubmit = (e) => {
-    e.preventDefault();
+    setLoading(true);
     if (checked) {
+      const form = Object.fromEntries(new FormData(e.target));
+      form.url = "/financiacion";
+      await sendPilotMsg(form);
       Swal.fire({
         icon: "success",
         title: "Mensaje enviado",
         showConfirmButton: false,
         timer: 1000,
-      });
-      setFormulario({
-        nombre: "",
-        telefono: "",
-        email: "",
-        mensaje: "",
+      }).then((_) => {
+        route.reload();
       });
     } else {
       Swal.fire("Debe aceptar las politicas de privacidad");
+      setLoading(false);
     }
   };
 
@@ -64,8 +58,6 @@ const FormContacto = () => {
               placeholder="Todos"
               name="nombre"
               id="nombre"
-              value={formulario.nombre}
-              onChange={onChange}
               className=" rounded-lg py-1 md:py-2 px-2 text-sm"
             />
           </div>
@@ -78,8 +70,6 @@ const FormContacto = () => {
               placeholder="Todos"
               name="telefono"
               id="telefono"
-              value={formulario.telefono}
-              onChange={onChange}
               className=" rounded-lg py-1 md:py-2  px-2 text-sm"
             />
           </div>
@@ -92,8 +82,6 @@ const FormContacto = () => {
               placeholder="Todos"
               name="email"
               id="email"
-              value={formulario.email}
-              onChange={onChange}
               className=" rounded-lg py-1 md:py-2 px-2 text-sm"
             />
           </div>
@@ -104,10 +92,8 @@ const FormContacto = () => {
             <textarea
               className="py-1 md:py-2 px-2 text-sm h-32 md:h-40 rounded-lg"
               placeholder="Todas"
-              name="mensaje"
-              id="nombre"
-              onChange={onChange}
-              value={formulario.mensaje}
+              name="descripcion"
+              id="descripcion"
             ></textarea>
           </div>
         </div>
@@ -129,10 +115,12 @@ const FormContacto = () => {
             </label>
           </div>
           <div>
-            <input
+            <LoadingButton
+              onClick={() => null}
+              title="Enviar"
+              id="buttonFormVende"
               type="submit"
-              value="Enviar"
-              className="bg-primary w-full md:w-auto md:px-16 py-2 md:py-3 text-white text-sm uppercase font-bold rounded-lg"
+              loading={loading}
             />
           </div>
         </div>

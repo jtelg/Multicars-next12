@@ -1,37 +1,48 @@
 import React, { useState } from "react";
 import Swal from "sweetalert2";
+import LoadingButton from "../../utils/loadingButton";
+import { sendPilotMsg } from "../../../../utils/pilot";
+import { useRouter } from "next/router";
 
-const FormularioID = () => {
+const FormularioID = ({ producto }) => {
   const [checked, setChecked] = useState(false);
-  const [formulario, setFormulario] = useState({
-    nombre: "",
-    telefono: "",
-    email: "",
-    mensaje: "",
-  });
+  const [loading, setLoading] = useState(false);
+  const route = useRouter();
+  // const [formulario, setFormulario] = useState({
+  //   nombre: "",
+  //   telefono: "",
+  //   email: "",
+  //   mensaje: "",
+  // });
 
-  const onChange = (e) => {
-    e.preventDefault();
-    setFormulario({ ...formulario, [e.target.name]: e.target.value });
-  };
+  // const onChange = (e) => {
+  //   e.preventDefault();
+  //   setFormulario({ ...formulario, [e.target.name]: e.target.value });
+  // };
 
-  const handlerSubmit = (e) => {
+  const handlerSubmit = async (e) => {
     e.preventDefault();
+    setLoading(true);
     if (checked) {
+      const form = Object.fromEntries(new FormData(e.target));
+      form.modelo = `${producto.modelo} ${producto.motor}`;
+      form.marca = producto.marca;
+      form.anio = producto.fecha;
+      form.url = `/vehiculos/${producto.idart}`;
+      await sendPilotMsg(form);
       Swal.fire({
         icon: "success",
         title: "Mensaje enviado",
         showConfirmButton: false,
         timer: 1000,
-      });
-      setFormulario({
-        nombre: "",
-        telefono: "",
-        email: "",
-        mensaje: "",
+      }).then((_) => {
+        route.reload();
+        // setLoading(false);
+        // console.log(form);
       });
     } else {
       Swal.fire("Debe aceptar las politicas de privacidad");
+      setLoading(false);
     }
   };
 
@@ -54,8 +65,8 @@ const FormularioID = () => {
               placeholder="Todos"
               name="nombre"
               id="nombre"
-              value={formulario.nombre}
-              onChange={onChange}
+              // value={formulario.nombre}
+              // onChange={onChange}
               className=" rounded-lg py-1 md:py-2 px-2 text-sm"
             />
           </div>
@@ -68,8 +79,8 @@ const FormularioID = () => {
               placeholder="Todos"
               name="telefono"
               id="telefono"
-              value={formulario.telefono}
-              onChange={onChange}
+              // value={formulario.telefono}
+              // onChange={onChange}
               className=" rounded-lg py-1 md:py-2  px-2 text-sm"
             />
           </div>
@@ -82,8 +93,8 @@ const FormularioID = () => {
               placeholder="Todos"
               name="email"
               id="email"
-              value={formulario.email}
-              onChange={onChange}
+              // value={formulario.email}
+              // onChange={onChange}
               className=" rounded-lg py-1 md:py-2 px-2 text-sm"
             />
           </div>
@@ -94,10 +105,10 @@ const FormularioID = () => {
             <textarea
               className="py-1 md:py-2 px-2 text-sm h-32 md:h-40 rounded-lg"
               placeholder="Todas"
-              name="mensaje"
-              id="nombre"
-              onChange={onChange}
-              value={formulario.mensaje}
+              name="descripcion"
+              id="descripcion"
+              // onChange={onChange}
+              // value={formulario.mensaje}
             ></textarea>
           </div>
         </div>
@@ -119,10 +130,17 @@ const FormularioID = () => {
             </label>
           </div>
           <div>
-            <input
+            {/* <input
               type="submit"
               value="Enviar"
               className="bg-primary w-full md:w-auto md:px-16 py-2 md:py-3 text-white text-sm uppercase font-bold rounded-lg"
+            /> */}
+            <LoadingButton
+              onClick={() => null}
+              title="Enviar"
+              id="buttonFormCotizaAuto"
+              type="submit"
+              loading={loading}
             />
           </div>
         </div>

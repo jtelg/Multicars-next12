@@ -83,7 +83,9 @@ const Carousel = ({ arr_imgs }) => {
             src={imgSelect}
           />
         </DialogBody>
-        <DialogFooter></DialogFooter>
+        <DialogFooter>
+          <div></div>
+        </DialogFooter>
       </Dialog>
     </>
   );

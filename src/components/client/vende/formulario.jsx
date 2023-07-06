@@ -1,11 +1,14 @@
 import React, { useState, useEffect } from "react";
 import Swal from "sweetalert2";
 import { sendPilotMsg } from "../../../utils/pilot";
+import { useRouter } from "next/router";
+import LoadingButton from "../utils/loadingButton";
 
 const Formulario = ({ padding }) => {
   // cotiza tu auto
   const [checked, setChecked] = useState(false);
-
+  const [loading, setLoading] = useState(false);
+  const route = useRouter();
   useEffect(() => {
     const getData = () => {
       const n = new Date().getFullYear();
@@ -20,19 +23,22 @@ const Formulario = ({ padding }) => {
 
   const handlerSubmit = async (e) => {
     e.preventDefault();
+    setLoading(true);
     if (checked) {
       const form = Object.fromEntries(new FormData(e.target));
       form.url = "/vende";
-      const data = await sendPilotMsg(form);
-      console.log(data);
+      await sendPilotMsg(form);
       Swal.fire({
         icon: "success",
         title: "Mensaje enviado",
         showConfirmButton: false,
         timer: 1000,
+      }).then((_) => {
+        route.reload();
       });
     } else {
       Swal.fire("Debe aceptar las politicas de privacidad");
+      setLoading(false);
     }
   };
   return (
@@ -139,10 +145,12 @@ const Formulario = ({ padding }) => {
             </label>
           </div>
           <div>
-            <input
+            <LoadingButton
+              onClick={() => null}
+              title="Enviar"
+              id="buttonFormContacto"
               type="submit"
-              value="Enviar"
-              className="bg-primary w-full md:w-auto md:px-16 py-2 md:py-3 text-white text-sm uppercase font-bold rounded-lg"
+              loading={loading}
             />
           </div>
         </div>

@@ -30,7 +30,7 @@ const CardLocation = () => {
               className="w-full h-full"
               loading="lazy"
               title="mapa1"
-              referrerpolicy="no-referrer-when-downgrade"
+              referrerPolicy="no-referrer-when-downgrade"
             ></iframe>
           </div>
         </div>
@@ -56,7 +56,7 @@ const CardLocation = () => {
               className="w-full h-full"
               allowFullScreen
               loading="lazy"
-              referrerpolicy="no-referrer-when-downgrade"
+              referrerPolicy="no-referrer-when-downgrade"
               title="mapa2"
             ></iframe>
           </div>
