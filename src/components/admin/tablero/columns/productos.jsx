@@ -4,7 +4,6 @@ import { toast } from "react-toastify";
 import Swal from "sweetalert2";
 
 import APIConsultas from "../../../../services/consultas";
-import servusos from "../../../../utils/usos";
 const ProductoColumnConfig = (router) => {
   const columns_prods = [
     {
@@ -69,9 +68,6 @@ const ProductoColumnConfig = (router) => {
     },
   ];
   const [dataChange, setDataChange] = useState(false);
-  // useEffect(() => {
-  //   setDataChange(Date.now());
-  // }, []);
 
   const onClickAction = (e, ind, params) => {
     e.stopPropagation(); // don't select this row after clicking
