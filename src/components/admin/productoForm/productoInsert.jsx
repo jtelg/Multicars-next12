@@ -1,7 +1,6 @@
 import { useRouter } from "next/router";
 import { useEffect, useState } from "react";
 import APIConsultas from "../../../services/consultas";
-import ServUsos from "../../../utils/usos";
 import ModalList from "../../client/utils/modalList";
 import ModalView from "../../client/utils/modalView";
 
