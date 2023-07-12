@@ -103,8 +103,6 @@ const ProductoColumnConfig = (router) => {
   const row_data = (data) => {
     if (data.slug) {
       router.push(`admin/producto/${data.slug}`);
-    } else {
-      `admin/producto/${servusos.convertUrl(data.modelo, "convert")}`;
     }
   };
 
