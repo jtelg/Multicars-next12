@@ -7,6 +7,8 @@ export default async function handler(req, res) {
         switch (req.query.path) {
           case "PRODUCTO_GET_LIST":
             return ctrlProducto.PRODUCTO_GET_LIST(req, res, resolve);
+          case "PRODUCTO_GET_XSLUG":
+            return ctrlProducto.PRODUCTO_GET_XSLUG(req, res, resolve);
           case "MEDIDA_GET_TODOLIST":
             return ctrlProducto.MEDIDA_GET_TODOLIST(req, res, resolve);
           case "PRODUCTO_SEARCH":

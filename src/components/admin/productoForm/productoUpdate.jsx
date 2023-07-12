@@ -5,8 +5,9 @@ import APIConsultas from "../../../services/consultas";
 import ImageForm from "./imageForm";
 import { useRouter } from "next/router";
 import Head from "next/head";
-import ServUsos from "../../../utils/usos";
 import Link from "next/link";
+
+import slugify from "slugify";
 
 const ProductoUpdate = (props) => {
   const [formulario, setFormulario] = useState({
@@ -37,6 +38,7 @@ const ProductoUpdate = (props) => {
     arrmedidasIndiv: [],
     arrcolor: [],
   });
+  const [slug, setSlug] = useState("");
   const [arr_categs, setArr_categs] = useState([]);
   const [arr_marcas, setArr_marcas] = useState([]);
   const [arr_medidas, setArr_medidas] = useState([]);
@@ -51,62 +53,65 @@ const ProductoUpdate = (props) => {
     setTitlePage(`${formulario.modelo} | ${props.appName}`);
   }, [formulario.modelo, props.appName]);
   useEffect(() => {
-    APIConsultas.modelos
-      .GET_XID(ServUsos.convertUrl(props.idPage, "revert"), true)
-      .then((data_prod) => {
-        if (!data_prod) return router.push("/admin");
-        setFormulario({
-          idart: data_prod.idart,
-          idsubc: data_prod.idsubc,
-          subc: data_prod.subcateg,
-          idcateg: data_prod.idcateg,
-          categ: data_prod.categoria,
-          idmodelo: data_prod.idmodelo,
-          modelo: data_prod.modelo,
-          idmarca: data_prod.idmarca,
-          marca: data_prod.marca,
-          fecha: data_prod.fecha,
-          caja: data_prod.caja,
-          km: data_prod.km,
-          motor: data_prod.motor,
-          combustible: data_prod.combustible,
-          codart: data_prod.codart,
-          precioventa: data_prod.precioventa,
-          preciocompra: data_prod.preciocompra,
-          moneda: data_prod.moneda,
-          visible: data_prod.visible,
-          feccarga: data_prod.feccarga,
-          descripcion: data_prod.descripcion,
-          descripBreve: data_prod.descripBreve,
-          typeCatalog: data_prod.typeCatalog,
-          arrimagesIndiv: [],
-          arrmedidasIndiv: data_prod.arrmedidasIndiv,
-          arrcolor: data_prod.arrcolor,
-        });
-        APIConsultas.categoria.TODO(true).then((categs) => {
-          setArr_categs(categs);
-        });
-        APIConsultas.marcas.TODO(true).then((marcas) => {
-          setArr_marcas(marcas);
-        });
-        APIConsultas.medida.TODO(true).then((medida) => {
-          setArr_medidas(medida);
-        });
-        switch (data_prod.typeCatalog) {
-          case 0:
-            APIConsultas.Images.SET_IMAGE(data_prod).then((imgs) => {
-              setFormulario((form) => ({ ...form, arrimagesIndiv: imgs }));
-            });
-            break;
-          case 1:
-            APIConsultas.Images.SET_ARRCOLOR(data_prod).then((prod) => {
-              setFormulario((form) => ({ ...form, arrcolor: prod.arrcolor }));
-            });
-
-            break;
-        }
+    APIConsultas.modelos.GET_XSLUG(props.idPage, true).then((data_prod) => {
+      if (!data_prod) return router.push("/admin");
+      setFormulario({
+        idart: data_prod.idart,
+        idsubc: data_prod.idsubc,
+        subc: data_prod.subcateg,
+        idcateg: data_prod.idcateg,
+        categ: data_prod.categoria,
+        idmodelo: data_prod.idmodelo,
+        modelo: data_prod.modelo,
+        idmarca: data_prod.idmarca,
+        marca: data_prod.marca,
+        fecha: data_prod.fecha,
+        caja: data_prod.caja,
+        km: data_prod.km,
+        motor: data_prod.motor,
+        combustible: data_prod.combustible,
+        codart: data_prod.codart,
+        precioventa: data_prod.precioventa,
+        preciocompra: data_prod.preciocompra,
+        moneda: data_prod.moneda,
+        visible: data_prod.visible,
+        feccarga: data_prod.feccarga,
+        descripcion: data_prod.descripcion,
+        descripBreve: data_prod.descripBreve,
+        typeCatalog: data_prod.typeCatalog,
+        arrimagesIndiv: [],
+        arrmedidasIndiv: data_prod.arrmedidasIndiv,
+        arrcolor: data_prod.arrcolor,
       });
+      setSlug(data_prod.slug);
+      APIConsultas.categoria.TODO(true).then((categs) => {
+        setArr_categs(categs);
+      });
+      APIConsultas.marcas.TODO(true).then((marcas) => {
+        setArr_marcas(marcas);
+      });
+      APIConsultas.medida.TODO(true).then((medida) => {
+        setArr_medidas(medida);
+      });
+      switch (data_prod.typeCatalog) {
+        case 0:
+          APIConsultas.Images.SET_IMAGE(data_prod).then((imgs) => {
+            setFormulario((form) => ({ ...form, arrimagesIndiv: imgs }));
+          });
+          break;
+        case 1:
+          APIConsultas.Images.SET_ARRCOLOR(data_prod).then((prod) => {
+            setFormulario((form) => ({ ...form, arrcolor: prod.arrcolor }));
+          });
+
+          break;
+      }
+    });
   }, [props.idPage, router]);
+
+  // useEffect(() => {
+  //   changeSlug();
+  // }, [formulario]);
 
   const setData = (item, name) => {
     setFormulario({
@@ -154,6 +159,7 @@ const ProductoUpdate = (props) => {
         [e.target.name]: e.target.value,
         visible: ctrlVisible(e.target.name, e.target.value),
       });
+      changeSlug();
     } else {
       let val = e.target.value;
       if (val === 0) val = ctrlVisible(e.target.name, e.target.value);
@@ -178,7 +184,8 @@ const ProductoUpdate = (props) => {
         const res = await APIConsultas.modelos.UPDATE(
           formulario.idart,
           campo,
-          valor
+          valor,
+          slug
         );
         if (res) {
           if (campo !== "visible") {
@@ -190,6 +197,33 @@ const ProductoUpdate = (props) => {
           return;
         }
         return toast.error(`Error al modificar el campo.`);
+      }, 2000)
+    );
+  };
+
+  const changeSlug = async () => {
+    setSlug(
+      slugify(
+        `${formulario.idart} ${formulario.marca} ${formulario.modelo} ${formulario.categ} ${formulario.motor} ${formulario.fecha}`,
+        {
+          lower: true, // Convertir a minúsculas
+          strict: true, // Remover caracteres especiales
+        }
+      )
+    );
+    clearTimeout(timer);
+    setTimer(
+      setTimeout(async () => {
+        const res = await APIConsultas.modelos.UPDATE(
+          formulario.idart,
+          "slug",
+          slug
+        );
+        if (res) {
+          return toast.success(`Dato actualizado!`, {
+            autoClose: 1000,
+          });
+        }
       }, 1000)
     );
   };
@@ -267,6 +301,7 @@ const ProductoUpdate = (props) => {
         }
       }
     }
+
     ocultar = ctrlForm(ocultar, campo, valor);
 
     return ocultar;
@@ -339,7 +374,16 @@ const ProductoUpdate = (props) => {
           <div className="flex justify-start mb-4 ">
             <div className="flex">
               <h1 className="text-secondary font-bold md:text-xl  uppercase ">
-                Ficha de articulo
+                Ficha de articulo -{" "}
+                <input
+                  className="px-3 h-8 text-sm  border-2 border-black rounded-[20px] mt-1 font-medium "
+                  type="text"
+                  placeholder=""
+                  id="slug"
+                  name="slug"
+                  readOnly
+                  value={slug}
+                />
               </h1>
             </div>
           </div>

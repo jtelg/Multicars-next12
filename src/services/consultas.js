@@ -96,10 +96,11 @@ const APIConsultas = {
       if (re.ok) return await re.json();
       return false;
     },
-    UPDATE: async (idart, campo, valor) => {
+    UPDATE: async (idart, campo, valor, slug) => {
       const data = {
         campo,
         valor,
+        slug,
       };
       const options = {
         method: "PUT",
@@ -132,6 +133,17 @@ const APIConsultas = {
       let baseUrl = process.env.NEXTAUTH_URL;
       if (local) baseUrl = "";
       const url = `${baseUrl}/api/producto/${idprod}/?path=PRODUCTO_GET_XID`;
+      const resprod = await fetch(url);
+      let dataprod = null;
+      if (resprod.ok) {
+        dataprod = await resprod.json();
+        return dataprod;
+      }
+    },
+    GET_XSLUG: async (slug, local) => {
+      let baseUrl = process.env.NEXTAUTH_URL;
+      if (local) baseUrl = "";
+      const url = `${baseUrl}/api/producto/?path=PRODUCTO_GET_XSLUG&slug='${slug}'`;
       const resprod = await fetch(url);
       let dataprod = null;
       if (resprod.ok) {

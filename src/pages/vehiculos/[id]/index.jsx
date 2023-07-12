@@ -17,7 +17,7 @@ const VehiculoID = () => {
   useEffect(() => {
     const fetchData = async () => {
       const idprod = router.query.id;
-      const dataprod = await APIConsultas.modelos.GET_XID(idprod, true);
+      const dataprod = await APIConsultas.modelos.GET_XSLUG(idprod, true);
       if (dataprod) {
         if (dataprod.typeCatalog === 0) {
           const imgs = await APIConsultas.Images.SET_IMAGE(dataprod);
@@ -44,12 +44,6 @@ const VehiculoID = () => {
         <Loading></Loading>
       ) : (
         <div className="pt-[75px]">
-          {/* <div className="bg-black flex flex-col justify-center pl-12 relative w-full h-12 items-start">
-            <button className="flex flex-row justify-start relative w-16 items-center">
-              <i className="bx bx-chevron-left text-2xl"></i>
-              Atras
-            </button>
-          </div> */}
           <div className="bg-black text-white px-5 md:px-12 py-2">
             <Link
               href={"/vehiculos"}
@@ -63,11 +57,7 @@ const VehiculoID = () => {
               {producto?.marca} {producto?.modelo} {producto?.motor}
             </h1>
           </div>
-          {/* <div className="px-5 md:px-12 bg-black text-white text-2xl font-bold py-4 h-fit">
-            <h1 className=" uppercase">
-              {producto?.marca} {producto?.modelo} {producto?.motor}
-            </h1>
-          </div> */}
+
           <div>
             <div className="p-5 md:px-12 space-y-4 md:space-y-0 md:grid md:grid-cols-2 md:gap-y-8">
               <Carousel

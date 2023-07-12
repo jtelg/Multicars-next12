@@ -10,21 +10,12 @@ import "swiper/css/pagination";
 // import required modules
 import { Navigation, Pagination, Mousewheel, Keyboard } from "swiper";
 
-import {
-  Dialog,
-  DialogHeader,
-  DialogBody,
-  DialogFooter,
-  Avatar,
-  Typography,
-  Card,
-} from "@material-tailwind/react";
+import { Dialog, DialogBody, Card } from "@material-tailwind/react";
 
 const Carousel = ({ arr_imgs }) => {
   const [open, setOpen] = useState(false);
-  const [imgSelect, setImgSelect] = useState(arr_imgs[0]);
-  const handleOpen = (img) => {
-    setImgSelect(img);
+
+  const handleOpen = () => {
     setOpen(() => !open);
   };
 
@@ -39,53 +30,40 @@ const Carousel = ({ arr_imgs }) => {
         loop={true}
         modules={[Navigation, Pagination, Mousewheel, Keyboard]}
         className="mySwiper rounded-3xl overflow-hidden md:h-fit w-fill"
+        onClick={() => handleOpen()}
       >
         {arr_imgs &&
           arr_imgs.map((img, i) => (
             <SwiperSlide key={i}>
-              <Card onClick={() => handleOpen(img)}>
+              <Card>
                 <img src={img} alt="foto" className="w-full " />
               </Card>
             </SwiperSlide>
           ))}
       </Swiper>
       <Dialog size="lg" open={open} handler={handleOpen}>
-        <DialogHeader className="justify-between">
-          <div className="flex items-center gap-3">
-            <Avatar
-              size="sm"
-              variant="square"
-              alt="candice wu"
-              src="/vector.png"
-            />
-            <div className="-mt-px flex flex-col">
-              <Typography
-                variant="small"
-                color="blue-gray"
-                className="font-medium"
-              >
-                Multicars
-              </Typography>
-              <Typography
-                variant="small"
-                color="gray"
-                className="text-xs font-normal"
-              >
-                @multicars.vm
-              </Typography>
-            </div>
-          </div>
-        </DialogHeader>
         <DialogBody divider={true} className="p-0">
-          <img
-            alt=""
-            className=" w-full object-cover object-center"
-            src={imgSelect}
-          />
+          <Swiper
+            cssMode={true}
+            navigation={true}
+            pagination={true}
+            mousewheel={true}
+            keyboard={true}
+            loop={true}
+            modules={[Navigation, Pagination, Mousewheel, Keyboard]}
+            className="mySwiper overflow-hidden md:h-fit w-fill"
+            onClick={() => handleOpen(arr_imgs[0])}
+          >
+            {arr_imgs &&
+              arr_imgs.map((img, i) => (
+                <SwiperSlide key={i}>
+                  <Card>
+                    <img src={img} alt="foto" className="w-full " />
+                  </Card>
+                </SwiperSlide>
+              ))}
+          </Swiper>
         </DialogBody>
-        <DialogFooter>
-          <div></div>
-        </DialogFooter>
       </Dialog>
     </>
   );
