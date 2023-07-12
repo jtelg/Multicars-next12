@@ -5,9 +5,12 @@ import ServUsos from "../../../utils/usos";
 import ModalList from "../../client/utils/modalList";
 import ModalView from "../../client/utils/modalView";
 
+import slugify from "slugify";
+
 const ProductoUpdate = (props) => {
   const [arr_categs, setArr_categs] = useState([]);
   const [arr_marcas, setArr_marcas] = useState([]);
+  const [slug, setSlug] = useState("");
   const [bndModal, setBandera] = useState({
     categ: false,
     subc: false,
@@ -20,6 +23,7 @@ const ProductoUpdate = (props) => {
     subc: "",
     idcateg: "",
     categ: "",
+    slug: "",
     modelo: "",
     idmarca: "",
     marca: "",
@@ -46,11 +50,16 @@ const ProductoUpdate = (props) => {
     if (name === "categ" || name === "subc" || name === "marca") {
       return clickBandera(null, name, true);
     }
+    if (name === "modelo") {
+      changeSlug();
+    }
 
     setFormulario({
       ...formulario,
       [name]: value,
+      slug: slug,
     });
+    // changeSlug();
   };
   const clickBandera = (ev, name, value) => {
     ev?.preventDefault();
@@ -60,10 +69,24 @@ const ProductoUpdate = (props) => {
     });
   };
 
+  const changeSlug = () => {
+    const newSlug = slugify(
+      `${formulario.marca} ${formulario.modelo} ${formulario.categ}`,
+      {
+        lower: true, // Convertir a minúsculas
+        strict: true, // Remover caracteres especiales
+      }
+    );
+    setSlug(newSlug);
+  };
+
   const setData = (item, name) => {
+    changeSlug();
+
     setFormulario({
       ...formulario,
       [name]: item.nombre,
+      slug: slug,
       [`id${name}`]: item[`id${name}`],
     });
   };
@@ -72,9 +95,7 @@ const ProductoUpdate = (props) => {
     e.preventDefault();
     const re = await APIConsultas.modelos.ADD(formulario);
     if (re) {
-      router.push(
-        `admin/producto/${ServUsos.convertUrl(formulario.modelo, "convert")}`
-      );
+      router.push(`admin/producto/${slug}`);
       closeModal(null);
     }
   };
@@ -97,6 +118,23 @@ const ProductoUpdate = (props) => {
             onSubmit={(e) => insertProducto(e)}
           >
             <div className="cont-inps w-full">
+              <div className="grid grid-cols-1 mr-3 w-full">
+                <label
+                  className=" text-sm text-black font-bold md:text-sm text-light"
+                  htmlFor="slug"
+                >
+                  Slug
+                </label>
+                <input
+                  className="px-3 h-8 text-sm border-b border-black mb-2"
+                  readOnly
+                  type="text"
+                  placeholder=""
+                  id="slug"
+                  name="slug"
+                  value={slug}
+                />
+              </div>
               <div className="flex w-full">
                 <div className="grid grid-cols-1 mr-3 w-1/2">
                   <label

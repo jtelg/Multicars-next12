@@ -9,6 +9,7 @@ const ctrlProducto = {
             idmarca,
             codart,
             modelo,
+            slug,
             precioventa,
             preciocompra,
             moneda,
@@ -23,6 +24,7 @@ const ctrlProducto = {
             '${req.body.idmarca || 1}',
             '${req.body.codart}',
             '${req.body.modelo}',
+            '${req.body.slug}',
             '${req.body.precioventa}',
             '${req.body.preciocompra}',
             '${req.body.moneda}',
@@ -46,7 +48,9 @@ const ctrlProducto = {
     const idart = req.query.id;
     const campo = req.body.campo;
     const valor = req.body.valor;
-    const sql = `UPDATE articulo SET ${campo} = '${valor}' WHERE idart = ${idart}`;
+    const slug = req.body.slug;
+
+    const sql = `UPDATE articulo SET ${campo} = '${valor}', slug = '${slug}'  WHERE idart = ${idart}`;
     APPLY_GET(sql, res, resolve);
   },
   PRODUCTO_DELETE: async (req, res, resolve) => {
@@ -176,6 +180,49 @@ const ctrlProducto = {
         ${P_offset}, ${P_limite};
   `;
     APPLY_GET(sql, res, resolve);
+  },
+  PRODUCTO_GET_XSLUG: async (req, res, resolve) => {
+    const sql = `CALL SP_articulo_get_xslug(${req.query.slug})`;
+    try {
+      const [result] = await conexionDB.query(sql);
+      const dataprod = result[0][0];
+      if (!dataprod) {
+        res.write(JSON.stringify([]));
+        return res.end();
+      }
+      if (dataprod.arrcolor) {
+        dataprod.arrcolor = JSON.parse(dataprod.arrcolor);
+        for (const color of dataprod.arrcolor) {
+          if (color.arrmedidas) {
+            color.arrmedidas = JSON.parse(color.arrmedidas);
+            color.medida = color.arrmedidas.map((e) => e.valor).join(", ");
+          }
+        }
+      } else {
+        dataprod.arrcolor = [];
+      }
+      if (dataprod.arrmedidasIndiv) {
+        dataprod.arrmedidasIndiv = JSON.parse(dataprod.arrmedidasIndiv);
+      } else {
+        dataprod.arrmedidasIndiv = [];
+      }
+
+      // switch (dataprod.typeCatalog) {
+      //   case 0:
+      //     dataprod.arrimagesIndiv = await APIConsultas.Images.SET_IMAGE(dataprod);
+      //     break;
+      //   case 1:
+      //     dataprod = await APIConsultas.Images.SET_ARRCOLOR(dataprod);
+      //     break;
+      // }
+
+      res.write(JSON.stringify(dataprod));
+      return res.end();
+    } catch (error) {
+      console.error(error);
+      res.status(500).end();
+      return resolve();
+    }
   },
   PRODUCTO_GET_XID: async (req, res, resolve) => {
     const sql = `CALL SP_articulo_get_xid('${req.query.id}')`;

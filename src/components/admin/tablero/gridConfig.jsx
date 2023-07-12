@@ -1,7 +1,6 @@
 import React, { Component } from "react";
 import Box from "@mui/material/Box";
 import { DataGrid, GridToolbarQuickFilter } from "@mui/x-data-grid";
-import OrderModals from "./columns/caja/cellEstadoVenta/actions/ventaModal";
 export class GridConfig extends Component {
   state = {
     pedidoSelect: null,
@@ -40,11 +39,6 @@ export class GridConfig extends Component {
           showCellRightBorder={true}
           showColumnRightBorder={true}
           components={{ Toolbar: QuickSearchToolbar }}
-        />
-        <OrderModals
-          data={this.state.pedidoSelect}
-          close={() => this.closeOrder()}
-          props={this.props}
         />
       </div>
     );

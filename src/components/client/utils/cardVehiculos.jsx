@@ -22,10 +22,10 @@ const CardVehiculos = ({ data }) => {
   return (
     <>
       <div className="shadow-[0px_2px_20px_0px_rgba(0,_0,_0,_0.1)] bg-white flex flex-col justify-start relative w-full max-w-full md:max-w-[300px]  items-center rounded-3xl overflow-hidden ">
-        <Link href={`/vehiculos/${producto?.idart}`} className="w-full">
+        <Link href={`/vehiculos/${producto?.slug}`} className="w-full">
           <div className="overflow-hidden">
             <img
-              src={arr_imgs[0]}
+              src={arr_imgs ? arr_imgs[0] : "/media/Car.png"}
               alt="foto"
               className=" w-full relative aspect-video object-cover"
             />

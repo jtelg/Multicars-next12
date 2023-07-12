@@ -101,9 +101,11 @@ const ProductoColumnConfig = (router) => {
   };
 
   const row_data = (data) => {
-    router.push(
-      `admin/producto/${servusos.convertUrl(data.modelo, "convert")}`
-    );
+    if (data.slug) {
+      router.push(`admin/producto/${data.slug}`);
+    } else {
+      `admin/producto/${servusos.convertUrl(data.modelo, "convert")}`;
+    }
   };
 
   return { columns_prods, dataChange };
