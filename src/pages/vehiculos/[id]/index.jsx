@@ -52,7 +52,7 @@ const VehiculoID = () => {
               <i className="bx bx-chevron-left text-2xl"></i> Atras
             </Link>
           </div>
-          <div className="bg-[url(https://file.rendit.io/n/cd8AJgARACZLGzRsnBQ7.svg)] bg-cover  flex flex-col justify-center pl-16 relative w-[90%] h-[4.9rem] items-start">
+          <div className="md:bg-[url(https://file.rendit.io/n/cd8AJgARACZLGzRsnBQ7.svg)] bg-cover  flex flex-col justify-center md:pl-16 pl-8 relative w-[90%] md:h-[4.9rem] items-start bg-[url(https://file.rendit.io/n/RUhu03ja6zBgctkeJ3R9.svg)]  bg-50%_50% bg-blend-normal mr-2 h-[3.2rem] shrink-0 px-4 py-2">
             <h1 className="whitespace-nowrap text-2xl font-bold text-white relative uppercase">
               {producto?.marca} {producto?.modelo} {producto?.motor}
             </h1>
