@@ -28,7 +28,7 @@ const ProductoUpdate = (props) => {
     codart: "",
     precioventa: "",
     preciocompra: "",
-    moneda: "",
+    moneda: "ARS",
     visible: "",
     feccarga: "",
     descripcion: "",
@@ -65,9 +65,9 @@ const ProductoUpdate = (props) => {
         modelo: data_prod.modelo,
         idmarca: data_prod.idmarca,
         marca: data_prod.marca,
-        fecha: data_prod.fecha,
+        fecha: data_prod.fecha || "",
         caja: data_prod.caja,
-        km: data_prod.km,
+        km: data_prod.km || "",
         motor: data_prod.motor,
         combustible: data_prod.combustible,
         codart: data_prod.codart,
@@ -314,6 +314,8 @@ const ProductoUpdate = (props) => {
       formulario.marca.length === 0 ||
       formulario.modelo.length === 0 ||
       formulario.moneda.length === 0 ||
+      formulario.km.length === 0 ||
+      formulario.fecha.length === 0 ||
       formulario.precioventa.length === 0 ||
       formulario.precioventa === 0
     ) {
@@ -597,11 +599,10 @@ const ProductoUpdate = (props) => {
                     className="px-3 h-10  border-2 border-black rounded-[20px] mt-1 "
                     id="moneda"
                     name="moneda"
-                    value={formulario.moneda}
                     onChange={onChange}
                   >
-                    <option value="peso">Pesos</option>
-                    <option value="usd">Dolar</option>
+                    <option value="ARS">Pesos</option>
+                    <option value="USD">Dolar</option>
                   </select>
                 </div>
                 <div className="grid grid-cols-1 mr-3 w-full">

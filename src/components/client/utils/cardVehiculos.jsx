@@ -42,7 +42,7 @@ const CardVehiculos = ({ data }) => {
                 </span>
                 <span>
                   <i className="bx bx-car"></i>{" "}
-                  {producto?.km.toLocaleString("es-ES")} km
+                  {producto?.km?.toLocaleString("es-ES")} km
                 </span>
               </div>
             </div>
