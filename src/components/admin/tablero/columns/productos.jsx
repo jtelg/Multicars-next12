@@ -4,6 +4,7 @@ import { toast } from "react-toastify";
 import Swal from "sweetalert2";
 
 import APIConsultas from "../../../../services/consultas";
+// import servusos from "../../../../utils/usos";
 const ProductoColumnConfig = (router) => {
   const columns_prods = [
     {
@@ -68,6 +69,9 @@ const ProductoColumnConfig = (router) => {
     },
   ];
   const [dataChange, setDataChange] = useState(false);
+  // useEffect(() => {
+  //   setDataChange(Date.now());
+  // }, []);
 
   const onClickAction = (e, ind, params) => {
     e.stopPropagation(); // don't select this row after clicking
@@ -89,17 +93,21 @@ const ProductoColumnConfig = (router) => {
       },
     }).then(async (result) => {
       if (result.isConfirmed) {
-        await APIConsultas.producto.UPDATE(prod.idart, "eliminado", 1);
+        await APIConsultas.modelos.UPDATE(
+          prod.idart,
+          "eliminado",
+          1,
+          prod.slug
+        );
         setDataChange(true);
         toast.success(`Articulo eliminado`);
+        router.push("/admin");
       }
     });
   };
 
   const row_data = (data) => {
-    if (data.slug) {
-      router.push(`admin/producto/${data.slug}`);
-    }
+    router.push(`admin/producto/${data.idart}`);
   };
 
   return { columns_prods, dataChange };

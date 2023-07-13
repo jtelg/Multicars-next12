@@ -6,6 +6,7 @@ import ImageForm from "./imageForm";
 import { useRouter } from "next/router";
 import Head from "next/head";
 import Link from "next/link";
+import ServUsos from "../../../utils/usos";
 
 import slugify from "slugify";
 
@@ -53,60 +54,63 @@ const ProductoUpdate = (props) => {
     setTitlePage(`${formulario.modelo} | ${props.appName}`);
   }, [formulario.modelo, props.appName]);
   useEffect(() => {
-    APIConsultas.modelos.GET_XSLUG(props.idPage, true).then((data_prod) => {
-      if (!data_prod) return router.push("/admin");
-      setFormulario({
-        idart: data_prod.idart,
-        idsubc: data_prod.idsubc,
-        subc: data_prod.subcateg,
-        idcateg: data_prod.idcateg,
-        categ: data_prod.categoria,
-        idmodelo: data_prod.idmodelo,
-        modelo: data_prod.modelo,
-        idmarca: data_prod.idmarca,
-        marca: data_prod.marca,
-        fecha: data_prod.fecha || "",
-        caja: data_prod.caja,
-        km: data_prod.km || "",
-        motor: data_prod.motor,
-        combustible: data_prod.combustible,
-        codart: data_prod.codart,
-        precioventa: data_prod.precioventa,
-        preciocompra: data_prod.preciocompra,
-        moneda: data_prod.moneda,
-        visible: data_prod.visible,
-        feccarga: data_prod.feccarga,
-        descripcion: data_prod.descripcion,
-        descripBreve: data_prod.descripBreve,
-        typeCatalog: data_prod.typeCatalog,
-        arrimagesIndiv: [],
-        arrmedidasIndiv: data_prod.arrmedidasIndiv,
-        arrcolor: data_prod.arrcolor,
-      });
-      setSlug(data_prod.slug);
-      APIConsultas.categoria.TODO(true).then((categs) => {
-        setArr_categs(categs);
-      });
-      APIConsultas.marcas.TODO(true).then((marcas) => {
-        setArr_marcas(marcas);
-      });
-      APIConsultas.medida.TODO(true).then((medida) => {
-        setArr_medidas(medida);
-      });
-      switch (data_prod.typeCatalog) {
-        case 0:
-          APIConsultas.Images.SET_IMAGE(data_prod).then((imgs) => {
-            setFormulario((form) => ({ ...form, arrimagesIndiv: imgs }));
-          });
-          break;
-        case 1:
-          APIConsultas.Images.SET_ARRCOLOR(data_prod).then((prod) => {
-            setFormulario((form) => ({ ...form, arrcolor: prod.arrcolor }));
-          });
+    // APIConsultas.modelos.GET_XSLUG(props.idPage, true).then((data_prod) => {
+    APIConsultas.modelos
+      .GET_XID(ServUsos.convertUrl(props.idPage, "revert"), true)
+      .then((data_prod) => {
+        if (!data_prod) return router.push("/admin");
+        setFormulario({
+          idart: data_prod.idart,
+          idsubc: data_prod.idsubc,
+          subc: data_prod.subcateg,
+          idcateg: data_prod.idcateg,
+          categ: data_prod.categoria,
+          idmodelo: data_prod.idmodelo,
+          modelo: data_prod.modelo,
+          idmarca: data_prod.idmarca,
+          marca: data_prod.marca,
+          fecha: data_prod.fecha || "",
+          caja: data_prod.caja,
+          km: data_prod.km || "",
+          motor: data_prod.motor,
+          combustible: data_prod.combustible,
+          codart: data_prod.codart,
+          precioventa: data_prod.precioventa,
+          preciocompra: data_prod.preciocompra,
+          moneda: data_prod.moneda,
+          visible: data_prod.visible,
+          feccarga: data_prod.feccarga,
+          descripcion: data_prod.descripcion,
+          descripBreve: data_prod.descripBreve,
+          typeCatalog: data_prod.typeCatalog,
+          arrimagesIndiv: [],
+          arrmedidasIndiv: data_prod.arrmedidasIndiv,
+          arrcolor: data_prod.arrcolor,
+        });
+        setSlug(data_prod.slug);
+        APIConsultas.categoria.TODO(true).then((categs) => {
+          setArr_categs(categs);
+        });
+        APIConsultas.marcas.TODO(true).then((marcas) => {
+          setArr_marcas(marcas);
+        });
+        APIConsultas.medida.TODO(true).then((medida) => {
+          setArr_medidas(medida);
+        });
+        switch (data_prod.typeCatalog) {
+          case 0:
+            APIConsultas.Images.SET_IMAGE(data_prod).then((imgs) => {
+              setFormulario((form) => ({ ...form, arrimagesIndiv: imgs }));
+            });
+            break;
+          case 1:
+            APIConsultas.Images.SET_ARRCOLOR(data_prod).then((prod) => {
+              setFormulario((form) => ({ ...form, arrcolor: prod.arrcolor }));
+            });
 
-          break;
-      }
-    });
+            break;
+        }
+      });
   }, [props.idPage, router]);
 
   // useEffect(() => {
@@ -536,6 +540,12 @@ const ProductoUpdate = (props) => {
                     htmlFor="km"
                   >
                     Kilometraje
+                    <abbr
+                      className="text-red-400 pl-1"
+                      title="Dato obligatorio"
+                    >
+                      *
+                    </abbr>
                   </label>
                   <input
                     className="px-3 h-10  border-2 border-black rounded-[20px] mt-1 "
