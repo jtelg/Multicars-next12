@@ -94,7 +94,9 @@ const ProductoUpdate = (props) => {
     e.preventDefault();
     const re = await APIConsultas.modelos.ADD(formulario);
     if (re) {
-      router.push(`admin/producto/${slug}`);
+      router.push(`admin/producto/${re.idart}`);
+
+      // router.push(`admin/producto/${slug}`);
       closeModal(null);
     }
   };

@@ -38,7 +38,7 @@ const Tablero = (props) => {
           setArr_use(data);
         });
     }
-  }, [props.selector, props.idcajaURL]);
+  }, [props.selector, props.idcajaURL, router]);
 
   return (
     <>
